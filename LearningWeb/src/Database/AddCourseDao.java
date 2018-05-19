@@ -1,9 +1,12 @@
 package Database;
 
 import DAO.CourseDAO;
+import DAO.RelationDAO;
 import DAO.TeacherDAO;
 import Page.Course;
 import Page.CoursePage;
+import Page.RelationPage;
+
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -205,19 +208,13 @@ public class AddCourseDao extends BaseDao{
         }
     }
     public boolean addprecourseid(String cid,String preid,String id) {
-        String sql = "insert into learningweb.relation values(?,?,?);";
-        try (
-                Connection conn = dataSource.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, id);
-            pstmt.setString(2,cid);
-            pstmt.setString(3, preid);
-            pstmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return false;
-        }
+        boolean flag = false;
+        RelationDAO relationDAO =new RelationDAO();
+        RelationPage relationPage = new RelationPage();
+        relationPage.setCourseid(cid);
+        relationPage.setFrontcourseid(preid);
+        flag=relationDAO.Add(relationPage);
+        return flag;
+
     }
 }

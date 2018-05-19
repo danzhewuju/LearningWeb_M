@@ -4,6 +4,7 @@ import Entity.CourseEntity;
 import Page.CoursePage;
 import Util.HibernateUtils;
 import org.hibernate.Session;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,22 +13,19 @@ import java.util.List;
  */
 public class CourseDAO {
 
-    public boolean IsOk(CoursePage coursePage){
+    public boolean IsOk(CoursePage coursePage) {
         boolean flag = true;
         CourseDAO courseDAO = new CourseDAO();
-        List<CoursePage> coursePageList = new ArrayList<>();
-        coursePageList = courseDAO.GetAll();
-        for(int i=0;i<coursePageList.size();i++){
-            CoursePage s = new CoursePage();
-            s = coursePageList.get(i);
-            if(s.getTeacherid().equals(coursePage.getTeacherid())&&s.getName().equals(coursePage.getName()))
-                return false;
-        }
-        return true;
+        CoursePage coursePaget = courseDAO.GetById(coursePage.getId());
+        if (coursePaget!=null)
+            flag = true;
+        else flag=false;
+        return flag;
+
     }
-    
+
     public boolean Add(CoursePage coursePage) {
-        if(!IsOk(coursePage))
+        if (!IsOk(coursePage))
             return false;
         boolean flag = false;
         Session session = null;
@@ -47,17 +45,17 @@ public class CourseDAO {
             session.save(courseEntity);
             session.getTransaction().commit();
             flag = true;
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
             flag = false;
-        }finally {
+        } finally {
             HibernateUtils.closeSession(session);
         }
         return flag;
     }
 
-    public boolean Del(CoursePage coursePage){
+    public boolean Del(CoursePage coursePage) {
 
         boolean flag = false;
         Session session = null;
@@ -65,23 +63,23 @@ public class CourseDAO {
             session = HibernateUtils.getSession();
             session.beginTransaction();
 
-            CourseEntity courseEntity=(CourseEntity)session.load(CourseEntity.class,coursePage.getId());
+            CourseEntity courseEntity = (CourseEntity) session.load(CourseEntity.class, coursePage.getId());
             session.delete(courseEntity);
 
             session.getTransaction().commit();
             flag = true;
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
             flag = false;
-        }finally {
+        } finally {
             HibernateUtils.closeSession(session);
         }
         return flag;
     }
 
     public boolean Update(CoursePage coursePage) {
-        if(!IsOk(coursePage))
+        if (!IsOk(coursePage))
             return false;
         boolean flag = false;
         Session session = null;
@@ -110,7 +108,7 @@ public class CourseDAO {
         return flag;
     }
 
-    public List<CoursePage> GetAll(){
+    public List<CoursePage> GetAll() {
         Session session = null;
         session = HibernateUtils.getSession();
         session.beginTransaction();
@@ -135,12 +133,12 @@ public class CourseDAO {
         return coursePageList;
     }
 
-    public CoursePage GetById(String id){
+    public CoursePage GetById(String id) {
         Session session = null;
         session = HibernateUtils.getSession();
         session.beginTransaction();
         CoursePage coursePage = new CoursePage();
-        CourseEntity courseEntity = (CourseEntity) session.load(CourseEntity.class,id);
+        CourseEntity courseEntity = (CourseEntity) session.load(CourseEntity.class, id);
         coursePage.setId(courseEntity.getId());
         coursePage.setName(courseEntity.getName());
         coursePage.setTeacherid(courseEntity.getTeacherid());
@@ -156,13 +154,13 @@ public class CourseDAO {
     /*
     根据一列的某一属性值得到一条数据
      */
-               /*第一个参数是列的名称，第二个参数是列的值*/
-    public CoursePage GetByColumn(String column,String key) {
+    /*第一个参数是列的名称，第二个参数是列的值*/
+    public CoursePage GetByColumn(String column, String key) {
         Session session = HibernateUtils.getSession();
-        String hql = "from CourseEntity where "+ column +" = "+ "'"+key+"'";
-        List<CourseEntity> s=session.createQuery(hql).list();
+        String hql = "from CourseEntity where " + column + " = " + "'" + key + "'";
+        List<CourseEntity> s = session.createQuery(hql).list();
         CoursePage coursePage = null;
-        if(s.size()>0){
+        if (s.size() > 0) {
             coursePage = new CoursePage();
             coursePage.setId(s.get(0).getId());
             coursePage.setName(s.get(0).getName());
@@ -180,13 +178,13 @@ public class CourseDAO {
     根据一列的某一属性值得到很多条数据
      */
     /*第一个参数是列的名称，第二个参数是列的值*/
-    public List<CoursePage> GetAllByColumn(String column, String key){
+    public List<CoursePage> GetAllByColumn(String column, String key) {
         Session session = HibernateUtils.getSession();
-        String hql = "from CourseEntity where "+ column +" = "+ "'"+key+"'";
-        List<CourseEntity> courseEntityList=session.createQuery(hql).list();
+        String hql = "from CourseEntity where " + column + " = " + "'" + key + "'";
+        List<CourseEntity> courseEntityList = session.createQuery(hql).list();
         List<CoursePage> coursePageList = new ArrayList();
-        if (courseEntityList != null && courseEntityList.size() > 0){
-            for(CourseEntity courseEntity : courseEntityList){
+        if (courseEntityList != null && courseEntityList.size() > 0) {
+            for (CourseEntity courseEntity : courseEntityList) {
                 CoursePage coursePage = new CoursePage();
                 coursePage.setId(courseEntity.getId());
                 coursePage.setName(courseEntity.getName());

@@ -1,5 +1,6 @@
 package AdministratorServlet;
 
+import DAO.CourseDAO;
 import Database.AddCourseDao;
 import Page.Course;
 import Page.CoursePage;
@@ -24,15 +25,14 @@ public class AdminCouUpd extends HttpServlet {
         PrintWriter out=response.getWriter();
         AddCourseDao dao=new AddCourseDao();
         Course c=new Course();
-        CoursePage cp=new CoursePage();
-        cp.setId(request.getParameter("Cno"));;
+        CourseDAO courseDAO =new CourseDAO();
+        String Cno = request.getParameter("Cno");
+        CoursePage cp=courseDAO.GetById(Cno);
         cp.setName(request.getParameter("Cname"));
         cp.setKind(request.getParameter("Ckind"));
         cp.setIntroduction(request.getParameter("Cintroduction"));
-        c.setCp(cp);
-
         boolean success=false;
-        success=dao.updateCourse(c, cno);
+        success=courseDAO.Update(cp);
         if(!success){
             out.print("<script language='javascript'>alert('修改失败！');"
                     + "window.location.href='Administrator/Admin-CouSel.jsp';</script>");

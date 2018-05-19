@@ -1,5 +1,7 @@
+import DAO.CourseDAO;
 import DAO.TeacherDAO;
 import Entity.LearnEntity;
+import Page.CoursePage;
 import Page.TeacherPage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,12 +19,9 @@ public class Main {
 
     public static void main(final String[] args) throws Exception {
 
-        TeacherDAO teacherDAO =new TeacherDAO();
-        TeacherPage teacherPage = teacherDAO.GetById("1");
-        System.out.println(teacherPage.getName());
-        teacherPage.setName("王子健");
-        teacherDAO.Update(teacherPage);
-
+        CourseDAO courseDAO =new CourseDAO();
+        CoursePage coursePage = courseDAO.GetByColumn("id", "1");
+        System.out.println(coursePage.getName());
 
     }
 }

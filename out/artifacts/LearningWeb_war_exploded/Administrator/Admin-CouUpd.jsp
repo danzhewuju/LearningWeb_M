@@ -123,7 +123,7 @@
                                                 %>
                                                 <tr class="success">
                                                     <td>课程号</td>
-                                                    <td><input type=text name=Cno value="<%=c.getCp().getId() %>"></td>
+                                                    <td><input type=text name=Cno value="<%=c.getCp().getId() %>" readonly="true"></td>
                                                 </tr>
                                                 <tr class="success">
                                                     <td>课程名</td>
