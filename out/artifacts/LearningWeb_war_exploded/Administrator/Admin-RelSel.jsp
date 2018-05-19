@@ -107,7 +107,9 @@
                                             <tr>
                                                 <th>序号</th>
                                                 <th>课程号</th>
+                                                <th>课程名称</th>
                                                 <th>先修课程号</th>
+                                                <th>先修课程名称</th>
                                                 <th>修改</th>
                                                 <th>删除</th>
                                             </tr>
@@ -120,12 +122,28 @@
                                                 List<RelationPage> list = dao.GetAll();
                                                 int t = list.size();
                                                 request.getSession().setAttribute("relationlist", list);
+                                                CourseDAO courseDAO =new CourseDAO();
+                                                ArrayList<CoursePage> coursepages1 = new ArrayList<>();
+                                                ArrayList<CoursePage> coursepages2 = new ArrayList<>();
+                                                for (int i=0;i<t;i++)
+                                                {
+                                                    CoursePage coursePage1 = courseDAO.GetByColumn("id",list.get(i).getCourseid());
+                                                    CoursePage coursePage2 = courseDAO.GetByColumn("id",list.get(i).getFrontcourseid());
+                                                    coursepages1.add(coursePage1);
+                                                    coursepages2.add(coursePage2);
+                                                }
+                                                request.getSession().setAttribute("coursepage1",coursepages1);
+                                                request.getSession().setAttribute("coursepage2",coursepages2);
+
+
                                             %>
                                             <c:forEach var="r" items="${sessionScope.relationlist}" varStatus="status">
                                                 <tr class="success">
                                                     <td>${r.id}</td>
                                                     <td>${r.courseid}</td>
+                                                    <td>${sessionScope.coursepage1[status.index].name}</td>
                                                     <td>${r.frontcourseid}</td>
+                                                    <td>${sessionScope.coursepage2[status.index].name}</td>
 
                                                     <td><a href="Admin-RelUpd.jsp?ID=${status.index}"
                                                            class="btn btn-info"
