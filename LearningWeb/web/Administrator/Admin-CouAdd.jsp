@@ -134,7 +134,7 @@
                                                 <option value="经济学">经济学</option>
                                                 <option value="工程技术">工程技术</option>
                                                 <option value="医学">医学</option>
-                                                <option value="医学">法学</option>
+                                                <option value="法学">法学</option>
                                             </select></td>
                                         </tr>
 

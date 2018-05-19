@@ -18,15 +18,10 @@ public class TeacherDAO {
     public boolean IsOk(TeacherPage teacherPage){
         boolean flag = true;
         TeacherDAO teacherDAO = new TeacherDAO();
-        List<TeacherPage> teacherPageList = new ArrayList<>();
-        teacherPageList = teacherDAO.GetAll();
-        for(int i=0;i<teacherPageList.size();i++){
-            TeacherPage s = new TeacherPage();
-            s = teacherPageList.get(i);
-            if(s.getUsername().equals(teacherPage.getUsername()))
-                return false;
-        }
-        return true;
+        TeacherPage teacherPageexist = teacherDAO.GetById(teacherPage.getId());
+        if (teacherPageexist!=null)
+            return  true;
+        else return false;
     }
 
 
@@ -100,7 +95,7 @@ public class TeacherDAO {
             session = HibernateUtils.getSession();
             session.beginTransaction();
 
-            TeacherEntity teacherEntity = (TeacherEntity) session.load(TeacherEntity.class, teacherPage.getId());
+            TeacherEntity teacherEntity = (TeacherEntity) session.load(TeacherEntity.class,teacherPage.getId());
             teacherEntity.setUsername(teacherPage.getUsername());
             teacherEntity.setStatus(teacherPage.getStatus());
             teacherEntity.setPassword(teacherPage.getPassword());
