@@ -16,12 +16,16 @@ public class TeacherDAO {
  * 增加
  */
     public boolean IsOk(TeacherPage teacherPage){
-        boolean flag = true;
-        TeacherDAO teacherDAO = new TeacherDAO();
-        TeacherPage teacherPageexist = teacherDAO.GetById(teacherPage.getId());
-        if (teacherPageexist!=null)
-            return  true;
-        else return false;
+        if (teacherPage.getId()!=null)
+        {
+            TeacherDAO teacherDAO = new TeacherDAO();
+            TeacherPage teacherPageexist = teacherDAO.GetById(teacherPage.getId());
+            if (teacherPageexist!=null)
+                return  true;
+            else return false;
+        }
+        else  return false;
+
     }
 
 
@@ -29,7 +33,7 @@ public class TeacherDAO {
     public boolean Add(TeacherPage teacherPage) {
 
         TeacherDAO teacherDAO = new TeacherDAO();
-        if(!teacherDAO.IsOk(teacherPage))
+        if(teacherDAO.IsOk(teacherPage))
             return false;
         boolean flag = false;
         Session session = null;

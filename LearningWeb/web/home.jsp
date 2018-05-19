@@ -10,18 +10,19 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <!--[if IE]>
+    <meta http-equiv="x-ua-compatible" content="IE=9"/><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MAPS|淘课-基于知识地图的多元化学习网站</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
     <!-- Stylesheet
     ================================================== -->
-    <link rel="stylesheet" type="text/css"  href="css/style.css">
-    <link rel="stylesheet" type="text/css"  href="css/style2.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
     <!-- font -->
@@ -48,7 +49,8 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -69,7 +71,10 @@
                             <li><a href="Login.jsp"> Login</a></li>
                             <li><a href="signup.jsp"> Sign up</a></li>
                         </c:if>
-                        <c:if test="${studentpage!=null}"><li><a href="Student/stu_home.jsp"><font color="white"size="12px">${studentpage.name}</font></a></li></c:if>
+                        <c:if test="${studentpage!=null}">
+                            <li><a href="Student/stu_home.jsp"><font color="white"
+                                                                     size="12px">${studentpage.name}</font></a></li>
+                        </c:if>
 
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -84,7 +89,8 @@
                 <h3>so that you can study more clear and efficient</h3>
                 <br>
                 <a href="Login.jsp" class="btn btn-primary my-btn">Start Now</a>
-                <a href="http://baike.baidu.com/link?url=mATZtjbez9vNb15gNBNT7Ku0rNMCn5msWiLlQm3tPorZLbjHwIX2MfTz202yWALyvG36B3w-e2DGFnYGoIiX5wWMGsP3gP0Y-A_Y2I3rqwS8GuBMLOArkAsUQdOpZo4r" class="btn btn-primary my-btn2">Learn More</a>
+                <a href="http://baike.baidu.com/link?url=mATZtjbez9vNb15gNBNT7Ku0rNMCn5msWiLlQm3tPorZLbjHwIX2MfTz202yWALyvG36B3w-e2DGFnYGoIiX5wWMGsP3gP0Y-A_Y2I3rqwS8GuBMLOArkAsUQdOpZo4r"
+                   class="btn btn-primary my-btn2">Learn More</a>
             </div>
         </div>
     </div>
@@ -159,24 +165,29 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img alt="" src="img/book-1623578_1280.jpg" />
+                            <img alt="" src="img/book-1623578_1280.jpg"/>
                             <div class="carousel-caption">
 
                             </div>
                         </div>
                         <div class="item">
-                            <img alt="" src="img/technology-2082642_1280.jpg" />
+                            <img alt="" src="img/technology-2082642_1280.jpg"/>
                             <div class="carousel-caption">
 
                             </div>
                         </div>
                         <div class="item">
-                            <img alt="" src="img/large-895567_1280.jpg" />
+                            <img alt="" src="img/large-895567_1280.jpg"/>
                             <div class="carousel-caption">
 
                             </div>
                         </div>
-                    </div> <a class="left carousel-control" href="#carousel-16881" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-16881" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-16881" data-slide="prev"><span
+                            class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control"
+                                                                                    href="#carousel-16881"
+                                                                                    data-slide="next"><span
+                        class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
         </div>
@@ -200,7 +211,9 @@
                                 <div class="caption">
                                     <h3><font color="black"> Mark Zuckerberg</font></h3>
                                     <p>
-                                        Mark Elliot Zuckerberg is an American computer programmer, Internet entrepreneur, and philanthropist. He is best known as one of five co-founders of the social networking website Facebook.
+                                        Mark Elliot Zuckerberg is an American computer programmer, Internet
+                                        entrepreneur, and philanthropist. He is best known as one of five co-founders of
+                                        the social networking website Facebook.
                                     </p>
                                     <p>
                                     <center><a class="btn btn-success" href="#">Follow</a></center>
@@ -214,7 +227,10 @@
                                 <div class="caption">
                                     <h3><font color="black">Bill Gates</font></h3>
                                     <p>
-                                        Bill Gates is the head of the software company Microsoft and one of the world's wealthiest men. Gates and Paul Allen founded Microsoft in the 1970s, though Allen left the company in 1983.In 1975, Gates and Paul Allen co-founded Microsoft
+                                        Bill Gates is the head of the software company Microsoft and one of the world's
+                                        wealthiest men. Gates and Paul Allen founded Microsoft in the 1970s, though
+                                        Allen left the company in 1983.In 1975, Gates and Paul Allen co-founded
+                                        Microsoft
                                     </p>
                                     <p>
                                     <center><a class="btn btn-success" href="#">Follow</a></center>
@@ -228,7 +244,9 @@
                                 <div class="caption">
                                     <h3><font color="black">Sundar Pichai</font></h3>
                                     <p>
-                                        Pichai is the chief executive officer of Google Inc.Formerly the Product Chief of Google, Pichai's current role was announced on 10 August 2015, as part of the restructuring process that made Alphabet Inc. into Google's parent company.
+                                        Pichai is the chief executive officer of Google Inc.Formerly the Product Chief
+                                        of Google, Pichai's current role was announced on 10 August 2015, as part of the
+                                        restructuring process that made Alphabet Inc. into Google's parent company.
                                     </p>
                                     <p>
                                     <center><a class="btn btn-success" href="#">Follow</a></center>

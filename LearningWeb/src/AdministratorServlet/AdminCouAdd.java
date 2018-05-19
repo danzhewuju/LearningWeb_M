@@ -24,15 +24,16 @@ public class AdminCouAdd extends HttpServlet {
 
         AddCourseDao dao = new AddCourseDao();
         CoursePage c = new CoursePage();
-        c.setId(request.getParameter("Cno"));
         String cname = request.getParameter("Cname");
         c.setName(cname);
         String tid = request.getParameter("Tno");
         c.setTeacherid(tid);
         c.setKind(request.getParameter("Ckind"));
+        c.setIntroduction("暂无介绍");
+        c.setPicture("../img/WX20170624-040847.png");//设置默认的图片路径
         boolean success1 = false;
         success1 = dao.findExistCourse(cname, tid);
-        if (!success1) {
+        if (success1) {
             out.print("<script language='javascript'>alert('该老师已存在改课程！');"
                     + "window.location.href='Administrator/Admin-CouAdd.jsp';</script>");
         } else {
