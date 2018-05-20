@@ -10,7 +10,7 @@ public class Message {
 
         //message 是传递的信息，page是传递的地址页面
 
-//        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.print("<script language='javascript'>alert('"+message+"');"
                 + "window.location.href='"+page+"';</script>");
