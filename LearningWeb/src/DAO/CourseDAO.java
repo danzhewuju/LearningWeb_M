@@ -16,16 +16,22 @@ public class CourseDAO {
     public boolean IsOk(CoursePage coursePage) {
         boolean flag = true;
         CourseDAO courseDAO = new CourseDAO();
-        CoursePage coursePaget = courseDAO.GetById(coursePage.getId());
-        if (coursePaget!=null)
-            flag = true;
-        else flag=false;
+        try{
+            CoursePage coursePaget = courseDAO.GetById(coursePage.getId());
+            if (coursePaget!=null)
+                flag = true;
+            else flag=false;
+        }catch (Exception e)
+        {
+            flag =false;
+
+        }
         return flag;
 
     }
 
     public boolean Add(CoursePage coursePage) {
-        if (!IsOk(coursePage))
+        if (IsOk(coursePage))
             return false;
         boolean flag = false;
         Session session = null;

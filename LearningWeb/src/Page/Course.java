@@ -11,6 +11,12 @@ public class Course {
     private String addcouid;
     private String precourse1;
     private String precourse2;
+    private String precourse3;
+    private String precourse4;
+    private int cnum;
+    private String teacherid;
+    private String coursename;
+
 
     public String getPrecourse1() {
         return precourse1;
@@ -36,8 +42,7 @@ public class Course {
         this.precourse3 = precourse3;
     }
 
-    private String precourse3;
-    private String precourse4;
+
 
     public String getPrecourse4() {
         return precourse4;
@@ -47,16 +52,15 @@ public class Course {
         this.precourse4 = precourse4;
     }
 
-    public String getKind() {
-        return kind;
+    public String getCoursename() {
+        return coursename;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setCoursename(String coursename) {
+        this.coursename = coursename;
     }
 
-    private String teacherid;
-    private String kind;
+
     public String getTeacherid() {
         return teacherid;
     }
@@ -81,7 +85,7 @@ public class Course {
         this.result = result;
     }
 
-    private int cnum;
+
 
     public int getCnum() {
         return cnum;

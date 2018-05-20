@@ -111,7 +111,7 @@
                                             <legend>上传资料</legend>
 
                                         </div>
-                                        <form action="../dupload.do" method="post" enctype="multipart/form-data">
+                                        <form action="../Tdupload" method="post" enctype="multipart/form-data">
 
 
                                             <table class="table table-hover">

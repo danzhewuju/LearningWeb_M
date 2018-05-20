@@ -1,11 +1,10 @@
 package Database;
 
+import DAO.AddcourseDAO;
 import DAO.CourseDAO;
 import DAO.RelationDAO;
 import DAO.TeacherDAO;
-import Page.Course;
-import Page.CoursePage;
-import Page.RelationPage;
+import Page.*;
 
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -19,38 +18,33 @@ import java.util.List;
  */
 public class AddCourseDao extends BaseDao{
     public ArrayList<Course> findTeacherCourse(String result){
+        AddcourseDAO addcourseDAO=new AddcourseDAO();
+        ArrayList<AddcoursePage> addcoursePages= (ArrayList<AddcoursePage>) addcourseDAO.GetAllByColumn("result",result);
+        TeacherDAO teacherDAO =new TeacherDAO();
+        ArrayList<Course> courses =new ArrayList<>();
+        for (AddcoursePage addcoursePage:addcoursePages)
+        {
+            Course course=new Course();
+            TeacherPage teacherPage = teacherDAO.GetById(addcoursePage.getTeacherid());
 
-        ArrayList<Course> teacouList=new ArrayList<Course>();
-        String sql="SELECT distinct addcourse.id,username,teacher.name,course,result,teacher.id,course.kind ,precourseid1,precourseid2,precourseid3,precourseid4  FROM  " +
-                "learningweb.addcourse,learningweb.teacher,learningweb.course where teacher.id=addcourse.teacherid=course.teacherid and result like  ?;";
-        try (
-                Connection conn=dataSource.getConnection();
-                PreparedStatement pstmt=conn.prepareStatement(sql)){
-                pstmt.setString(1, result);
-                ResultSet rst=pstmt.executeQuery();
-            while(rst.next()){
-                Course t=new Course();
-                CoursePage cp=new CoursePage();
-                cp.setName(rst.getString("course"));
-                t.setCp(cp);
-                t.setKind(rst.getString("course.kind"));
-                t.setTeacherid(rst.getString("teacher.id"));
-                t.setAddcouid(rst.getString("addcourse.id"));
-                t.setTname(rst.getString("teacher.name"));
-                t.setTusername(rst.getString("username"));
-                t.setResult(rst.getString("result"));
-                t.setPrecourse1(rst.getString("precourseid1"));
-                t.setPrecourse2(rst.getString("precourseid2"));
-                t.setPrecourse3(rst.getString("precourseid3"));
-                t.setPrecourse4(rst.getString("precourseid4"));
-                teacouList.add(t);
-            }
-            return teacouList;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
+            course.setCoursename(addcoursePage.getCourse());
+            course.setTeacherid(teacherPage.getId());
+            course.setTname(teacherPage.getName());
+            course.setTusername(teacherPage.getUsername());
+
+            course.setResult(addcoursePage.getResult());
+            course.setAddcouid(addcoursePage.getId());
+            course.setPrecourse1(addcoursePage.getPrecourseid1());
+            course.setPrecourse2(addcoursePage.getPrecourseid2());
+            course.setPrecourse3(addcoursePage.getPrecourseid3());
+            course.setPrecourse4(addcoursePage.getPrecourseid4());
+
+
+            courses.add(course);
+
         }
+        return courses;
+
     }
     public boolean updateTeaCou(String result,Course c){
         String sql="update learningweb.addcourse set result=? where id=?";
@@ -151,22 +145,11 @@ public class AddCourseDao extends BaseDao{
         }
     }
     public boolean updateCourse(Course c,String cno) {
-        String sql = "update learningweb.course set id=?,name=?,introduction=?,kind=? where id=?;";
-        try (
-                Connection conn = dataSource.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, c.getCp().getId());
-            pstmt.setString(2, c.getCp().getName());
-            pstmt.setString(3, c.getCp().getIntroduction());
-            pstmt.setString(4, c.getCp().getKind());
-            pstmt.setString(5, cno);
-            pstmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return false;
-        }
+       AddcourseDAO addcourseDAO=new AddcourseDAO();
+       AddcoursePage addcoursePage =addcourseDAO.GetById(c.getAddcouid());
+       addcoursePage.setResult(cno);
+       boolean flag =addcourseDAO.Update(addcoursePage);
+       return flag;
     }
     public boolean deleteCourse(String cno){
         String sql="DELETE FROM learningweb.course WHERE id=?;";

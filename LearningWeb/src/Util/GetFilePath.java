@@ -15,8 +15,8 @@ public class GetFilePath {
             path = path.substring(5, path.indexOf("WEB-INF") + 8);//如果是windwos将5变成6
             //System.out.println("current path :" + path);
         }
-        String path1[]=path.split("WEB-INF");
-        String repath = path1[0]+rpath;
+        String path1[]=path.split("LearningWeb_M");
+        String repath = path1[0]+"LearningWeb_M/LearningWeb/web/"+rpath;
         return repath;
     }
 }

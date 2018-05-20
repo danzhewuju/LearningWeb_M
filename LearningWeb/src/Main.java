@@ -20,9 +20,7 @@ public class Main {
 
     public static void main(final String[] args) throws Exception {
 
-        System.out.println(GetFilePath.getFilePath("data/examtest"));
-
-//        System.out.println(GetFilePath.getFilePath("听.jpg"));
-
+        String uuid = UUID.randomUUID().toString().replace("-","");
+        System.out.println(uuid);
     }
 }

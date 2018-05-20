@@ -2,8 +2,13 @@ package TeacherServlet;
 
 import DAO.ChapterDAO;
 import DAO.DataDAO;
+import DAO.ExamDAO;
 import Page.ChapterPage;
 import Page.DataPage;
+import Page.ExamPage;
+import Util.FileUpload;
+import Util.GetFilePath;
+import Util.Message;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,52 +25,80 @@ import java.util.List;
 /**
  * Created by zyl on 2017/7/2.
  */
-@WebServlet(name = "Tdupload",value = "/dupload.do")
-@MultipartConfig(location="D:\\",fileSizeThreshold=1024)
+@WebServlet(name = "Tdupload",value = "/Tdupload")
 public class Tdupload extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+        /* 完成文件的写入*/
+        String path =GetFilePath.getFilePath("data");
+        FileUpload fileUpload =new FileUpload(path,request,"data");
+        fileUpload.upload();
 
-        Part part=request.getPart("myfile");
-        String path1;
+//        文件存入数据库
+       DataDAO dataDAO=new DataDAO();
+       DataPage dataPage=new DataPage();
 
-        String path="D:\\IJ存储\\Working (1)\\Working\\LearningWeb\\web\\teacher\\T-resource\\video";
-        File f=new File(path);
-        if(!f.exists()){
-            f.mkdirs();
-        }
-        if(request.getParameter("kind").equals("PPT"))
+        String chapterid = fileUpload.getHashMap().get("chapterid").toString();
+        String kind =fileUpload.getHashMap().get("kind").toString();
+        String name = fileUpload.getHashMap().get("dname").toString();
+        String address = fileUpload.getRpath();
+
+        dataPage.setChapterid(chapterid);
+        dataPage.setAddress(address);
+        dataPage.setKind(kind);
+        dataPage.setName(name);
+
+        boolean success =dataDAO.Add(dataPage);
+        if (success)
         {
-            path=path+"\\"+request.getParameter("dname")+".pptx";
-            path1="../teacher/T-resource/video/"+request.getParameter("dname")+".pptx";
+            Message.alermessage(response,"资料上传成功!","teacher/T-uploadpage2.jsp");
         }
-        else if(request.getParameter("kind").equals("视频"))
+        else
         {
-            path=path+"\\"+request.getParameter("dname")+".mp4";
-            path1="../teacher/T-resource/video/"+request.getParameter("dname")+".mp4";
+            Message.alermessage(response,"资料上传失败！","teacher/T-uploadpage2.jsp");
         }
-        else{
-            path="#";
-            path1="#";
-        }
-        part.write(path);
-        ServletContext con=this.getServletContext();
-        DataPage dp=new DataPage();
-        String cid=(String)request.getSession().getAttribute("cid");
-        String chapterid=request.getParameter("chapterid");
-        request.getSession().setAttribute("cid", cid);
-        dp.setAddress(path1);
-        dp.setKind(request.getParameter("kind"));
-        dp.setName(request.getParameter("dname"));
-        dp.setChapterid(chapterid);
-        DataDAO dd=new DataDAO();
 
-        if(dd.GetByColumn("chapterid",chapterid)==null){
-        dd.Add(dp);}
-        else{
-            dd.Update(dp);
-        }
+
+
+/*   重构相关代码*/
+//        Part part=request.getPart("myfile");
+//        String path1;
+//
+//        String path=GetFilePath.getFilePath("data");
+//        File f=new File(path);
+//        if(!f.exists()){
+//            f.mkdirs();
+//        }
+//        if(request.getParameter("kind").equals("PPT"))
+//        {
+//            path=path+"\\"+request.getParameter("dname")+".pptx";
+//            path1="../teacher/T-resource/video/"+request.getParameter("dname")+".html";
+//        }
+//        else if(request.getParameter("kind").equals("视频"))
+//        {
+//            path=path+"\\"+request.getParameter("dname")+".mp4";
+//            path1="../teacher/T-resource/video/"+request.getParameter("dname")+".mp4";
+//        }
+//        else{
+//            path="#";
+//            path1="#";
+//        }
+//        part.write(path);
+//        ServletContext con=this.getServletContext();
+//        DataPage dp=new DataPage();
+//        String cid=(String)request.getSession().getAttribute("cid");
+//        String chapterid=request.getParameter("chapterid");
+//        request.getSession().setAttribute("cid", cid);
+//        dp.setAddress(path1);
+//        dp.setKind(request.getParameter("kind"));
+//        dp.setName(request.getParameter("dname"));
+//        dp.setChapterid(chapterid);
+//        DataDAO dd=new DataDAO();
+//
+//        if(dd.GetByColumn("chapterid",chapterid)==null){
+//        dd.Add(dp);}
+//        else{
+//            dd.Update(dp);
+//        }
 
         response.sendRedirect("/Tbfupload");
     }

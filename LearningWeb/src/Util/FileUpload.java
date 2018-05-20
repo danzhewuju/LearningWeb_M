@@ -14,23 +14,27 @@ public class FileUpload {
     private String path; //系统的存储路径
     private HttpServletRequest request;//request 请求
     private String rpath;   //网站的相对目录
+    private String rfile;
     private DiskFileItemFactory factory;
     private ServletFileUpload upload;
     private List<FileItem> items;
     private HashMap hashMap;   //利用map在进行存储，是的在实现的方法上和request.getparameter()相似
 
-    public FileUpload(String path, HttpServletRequest request) {
+    public FileUpload(String path, HttpServletRequest request,String rfile) {
         this.path = path;
         this.request = request;
+        this.rfile = "/"+rfile;
     }
 
     public String getPath() {
         return path;
     }
 
+
     public void setPath(String path) {
         this.path = path;
     }
+
 
     public HttpServletRequest getRequest() {
         return request;
@@ -52,13 +56,6 @@ public class FileUpload {
         this.rpath = spath +"/"+ filename;
     }
 
-    public DiskFileItemFactory getFactory() {
-        return factory;
-    }
-
-    public void setFactory(DiskFileItemFactory factory) {
-        this.factory = factory;
-    }
 
     public ServletFileUpload getUpload() {
         return upload;
@@ -88,9 +85,9 @@ public class FileUpload {
         factory = new DiskFileItemFactory();
         upload = new ServletFileUpload(factory);
         upload.setHeaderEncoding("UTF-8");
-        factory.setSizeThreshold(1024*1024*10);
+        factory.setSizeThreshold(1024*1024*100);
 //        File linshi = new File("C:\\Programming\\JavaWeb\\LearningWorking\\web\\data");
-        upload.setSizeMax(1024*1024*10);
+        upload.setSizeMax(1024*1024*1024);
         hashMap=new HashMap();
 
         try {
@@ -122,10 +119,10 @@ public class FileUpload {
                         in = item.getInputStream();
                         byte[] buffer = new byte[1024*1024];
                         int len = 0;
-                        setRpath("/data/examtest",fileName);//设置相对路径
-                        fileName = path+"/"+ fileName;//文件最终上传的位置
+                        setRpath(rfile,fileName);//设置相对路径
+                        fileName = path+"/"+fileName;//文件最终上传的位置
 
-                       // System.out.println(fileName);
+                        System.out.println(fileName);
                         OutputStream out = new FileOutputStream(fileName);
 
                         while ((len = in.read(buffer)) != -1) {

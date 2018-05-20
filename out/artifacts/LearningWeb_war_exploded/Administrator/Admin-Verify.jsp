@@ -110,8 +110,8 @@
                                 <thead>
                                 <tr>
 
+
                                     <th>课程名</th>
-                                    <th>课程类型</th>
                                     <th>教师用户名</th>
                                     <th>任课教师</th>
                                     <th>先修课程号</th>
@@ -122,8 +122,7 @@
                                 <tbody>
                                 <c:forEach var="c" items="${sessionScope.teacoulist}" varStatus="status">
                                     <tr class="warning">
-                                        <td>${c.cp.name}</td>
-                                        <td>${c.kind}</td>
+                                        <td>${c.coursename}</td>
                                         <td>${c.tusername}</td>
                                         <td>${c.tname}</td>
                                         <td>${c.precourse1} ${c.precourse2} ${c.precourse3} ${c.precourse4}</td>

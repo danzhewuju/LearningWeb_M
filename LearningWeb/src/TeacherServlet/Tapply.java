@@ -4,6 +4,7 @@ import DAO.AddcourseDAO;
 import Page.AddcoursePage;
 import Page.TeacherPage;
 import Util.FileUpload;
+import Util.GetFilePath;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,7 +50,7 @@ public class Tapply extends HttpServlet {
         request.getSession().setAttribute("flag",f);
 
 
-        FileUpload fileUpload=new FileUpload("C:\\Programming\\JavaWeb\\LearningWeb\\LearningWeb\\web\\data",request);
+        FileUpload fileUpload=new FileUpload(GetFilePath.getFilePath("data"),request,"data");
         fileUpload.upload();
         System.out.println("输出成功！！！\t"+fileUpload.getRpath());
 
