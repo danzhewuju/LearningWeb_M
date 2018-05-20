@@ -3,6 +3,7 @@ package TeacherServlet;
 import DAO.ExamDAO;
 import Page.ExamPage;
 import Util.FileUpload;
+import Util.GetFilePath;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -24,12 +25,9 @@ public class Tshow2 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
 
 
-
-
-
-
-
-        String path="C:\\Programming\\JavaWeb\\LearningWeb\\LearningWeb\\web\\data\\examtest";//设置题目的存储路径
+//        String path="C:\\Programming\\JavaWeb\\LearningWeb\\LearningWeb\\web\\data\\examtest";//设置题目的存储路径，Windows环境下的配置
+//        String path = "/Users/alexanderdan/Program/JavaWeb/LearningWeb_M/LearningWeb/web/data/examtest";//必须指定存储路径mac环境下的配置
+        String path = GetFilePath.getFilePath("data/examtest");
         FileUpload fileUpload=new FileUpload(path,request);
         fileUpload.upload();//文件的存储写入
 
@@ -43,29 +41,7 @@ public class Tshow2 extends HttpServlet {
         ExamDAO examDAO=new ExamDAO();
         examDAO.Add(examPage);//数据库的写入
 
-//        Part part=request.getPart("myfile");
-//        String path1;
-//
-//        String path="D:\\IJ存储\\Working (1)\\Working\\LearningWeb\\web\\T-resource\\pic";
-//        File f=new File(path);
-//        if(!f.exists()){
-//            f.mkdirs();
-//        }
-//        path=path+"\\"+request.getParameter("chaptername")+".jpg";
-//        path1="../T-resource/pic/"+request.getParameter("chaptername")+".jpg";
-//        part.write(path);
-//        ServletContext con=this.getServletContext();
-//
-//        ExamPage ep=new ExamPage();
-//        ep.setAddress(path1);
-//        ep.setAnswer(answer);
-//        ep.setChapterid(chapterid);
-//        ExamDAO ed=new ExamDAO();
-//        if(ed.GetByColumn("chapter",chapterid)==null){
-//            ed.Add(ep);
-//        }else{
-//            ed.Update(ep);
-//        }
+
 
         try {
             response.sendRedirect("../Tshow");

@@ -3,6 +3,7 @@ import DAO.TeacherDAO;
 import Entity.LearnEntity;
 import Page.CoursePage;
 import Page.TeacherPage;
+import Util.GetFilePath;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,9 +20,9 @@ public class Main {
 
     public static void main(final String[] args) throws Exception {
 
-        CourseDAO courseDAO =new CourseDAO();
-        CoursePage coursePage = courseDAO.GetByColumn("id", "1");
-        System.out.println(coursePage.getName());
+        System.out.println(GetFilePath.getFilePath("data/examtest"));
+
+//        System.out.println(GetFilePath.getFilePath("听.jpg"));
 
     }
 }

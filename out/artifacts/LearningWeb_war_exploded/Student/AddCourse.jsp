@@ -109,7 +109,6 @@
                                         <c:forEach var="j"  begin="0" end="3" step="1">
                                             <c:if test="${count<sessionScope.course.canchoosecount}">
                                                 <td>
-                                                    this is : ${count+1}
                                                     <c:if test="${i!=sessionScope.course.canchoosecount}">
                                                         <ul>
                                                             <li> 名称：${sessionScope.course.canchoosecourses[count].name}</li>

@@ -88,9 +88,9 @@ public class FileUpload {
         factory = new DiskFileItemFactory();
         upload = new ServletFileUpload(factory);
         upload.setHeaderEncoding("UTF-8");
-        factory.setSizeThreshold(1024*1024*100);
+        factory.setSizeThreshold(1024*1024*10);
 //        File linshi = new File("C:\\Programming\\JavaWeb\\LearningWorking\\web\\data");
-        upload.setSizeMax(1024*1024*100);
+        upload.setSizeMax(1024*1024*10);
         hashMap=new HashMap();
 
         try {
@@ -123,7 +123,7 @@ public class FileUpload {
                         byte[] buffer = new byte[1024*1024];
                         int len = 0;
                         setRpath("/data/examtest",fileName);//设置相对路径
-                        fileName = path+"\\"+ fileName;//文件最终上传的位置
+                        fileName = path+"/"+ fileName;//文件最终上传的位置
 
                        // System.out.println(fileName);
                         OutputStream out = new FileOutputStream(fileName);

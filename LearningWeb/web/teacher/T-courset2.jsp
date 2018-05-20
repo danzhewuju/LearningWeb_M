@@ -94,7 +94,7 @@
                                                     <td> ${as.id} </td>
                                                     <td>${as.name}</td>
 
-                                                    <td><a class="btn btn-success" href="T-courset3.jsp?chaid=${as.id}">添加后续</a>
+                                                    <td><a class="btn btn-success" href="T-courset3.jsp?chaid=${as.id}">添加前序</a>
                                                     </td>
                                                     </tr>
                                                 </c:forEach>
