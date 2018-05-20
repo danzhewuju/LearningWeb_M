@@ -17,7 +17,7 @@ public class FileUpload {
     private DiskFileItemFactory factory;
     private ServletFileUpload upload;
     private List<FileItem> items;
-    private HashMap hashMap;   //利用map在进行存储
+    private HashMap hashMap;   //利用map在进行存储，是的在实现的方法上和request.getparameter()相似
 
     public FileUpload(String path, HttpServletRequest request) {
         this.path = path;
