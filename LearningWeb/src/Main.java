@@ -20,7 +20,7 @@ public class Main {
 
     public static void main(final String[] args) throws Exception {
 
-        String uuid = UUID.randomUUID().toString().replace("-","");
+        String uuid = UUID.randomUUID().toString().replace("-", "");
         System.out.println(uuid);
     }
 }
