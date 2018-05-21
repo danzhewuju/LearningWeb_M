@@ -5,7 +5,7 @@
   Time: 12:51
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"  %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
@@ -89,27 +89,32 @@
                                     <div class="col-md-4 column">
                                         <form class="form-horizontal" action="/Evaluate" method="post">
                                             <ol>
-                                                <c:forEach var="i" begin="0" end="${sessionScope.question.count}" step="1">
+                                                <c:forEach var="i" begin="0" end="${sessionScope.question.count}"
+                                                           step="1">
                                                     <c:if test="${i!=sessionScope.question.count}">
                                                         <div class="col-sm-offset-4">
 
                                                             <div class="form-group">
-                                                                <label class="col-sm-1 control-label">A <input type="radio"
-                                                                                                               name="radio${i}"
-                                                                                                               class="radio"
-                                                                                                               value="A"></label>
-                                                                <label class="col-sm-1 control-label">B <input type="radio"
-                                                                                                               name="radio${i}"
-                                                                                                               class="radio"
-                                                                                                               value="B"></label>
-                                                                <label class="col-sm-1 control-label">C <input type="radio"
-                                                                                                               name="radio${i}"
-                                                                                                               class="radio"
-                                                                                                               value="C"></label>
-                                                                <label class="col-sm-1 control-label">D <input type="radio"
-                                                                                                               name="radio${i}"
-                                                                                                               class="radio"
-                                                                                                               value="D"></label>
+                                                                <label class="col-sm-1 control-label">A <input
+                                                                        type="radio"
+                                                                        name="radio${i}"
+                                                                        class="radio"
+                                                                        value="A"></label>
+                                                                <label class="col-sm-1 control-label">B <input
+                                                                        type="radio"
+                                                                        name="radio${i}"
+                                                                        class="radio"
+                                                                        value="B"></label>
+                                                                <label class="col-sm-1 control-label">C <input
+                                                                        type="radio"
+                                                                        name="radio${i}"
+                                                                        class="radio"
+                                                                        value="C"></label>
+                                                                <label class="col-sm-1 control-label">D <input
+                                                                        type="radio"
+                                                                        name="radio${i}"
+                                                                        class="radio"
+                                                                        value="D"></label>
                                                             </div>
                                                         </div>
 

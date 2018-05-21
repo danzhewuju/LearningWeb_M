@@ -79,7 +79,7 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="text-center">
                         <jsp:forward page="${sessionScope.address}"></jsp:forward>
                     </div>
 
