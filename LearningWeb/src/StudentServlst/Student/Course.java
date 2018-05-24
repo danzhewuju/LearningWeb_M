@@ -2,11 +2,9 @@ package StudentServlst.Student;
 
 import DAO.CourseDAO;
 import DAO.LearnDAO;
+import DAO.RelationDAO;
 import DAO.TeacherDAO;
-import Page.CoursePage;
-import Page.LearnPage;
-import Page.StudentPage;
-import Page.TeacherPage;
+import Page.*;
 
 import java.util.ArrayList;
 
@@ -23,10 +21,11 @@ public class Course {
     private ArrayList<CoursePage> canchoosecourses;//还未学习的课程
     private ArrayList<TeacherPage> canteacherPages;//可以选择的老师信息,与canchoosecourses形成映射关系
     private int canchoosecount;//可以选择的课程个数
-    private ArrayList<SuggestCourse> suggestCourses;//对应的每一个课程建议课程
+    private ArrayList<SuggestCourse> suggestCourses;//对应的每一个课程建议课程,与未选择的课程相对应
     private CoursePage suggestcoursepage; //系统推荐课程将来可以采用好的推荐算法
     private ArrayList<CoursePage> suggestcoursepages;//按照类别推荐的一系列的课程
     private int suggestcoursepagescount;//按类别推荐的课程的数目
+    private ArrayList<CoursePage> suggestcoursebyrelation;//根据课程的关系来推荐课程
 
     public Course(StudentPage studentPage) {
         this.studentPage = studentPage;
@@ -42,8 +41,8 @@ public class Course {
             SuggestCourse suggestCourse = new SuggestCourse(canchoosecourses.get(i), getChoosedcourses());
             suggestCourses.add(suggestCourse);
         }
-
-
+        setSuggestcoursepages();//获取类别推荐课程
+        setSuggestcoursebyrelation();//获取结构推荐
     }
 
     public StudentPage getStudentPage() {
@@ -106,7 +105,7 @@ public class Course {
             choosedcourses.add(courseDAO.GetById(learnPages.get(i).getCourseid()));
         }
         choosedcount = choosedcourses.size();
-        setSuggestcoursepages();
+
     }
 
     public int getChoosedcount() {
@@ -199,13 +198,16 @@ public class Course {
 
     public void setSuggestcoursepages() {
         suggestcoursepages = new ArrayList<>();
+        String major = studentPage.getMajor();
         for (CoursePage c : canchoosecourses) {
-            if (c.getKind().equals(studentPage.getMajor())) {
+            String target = c.getKind();
+            if (target.contains(major) || major.contains(target)) {
                 suggestcoursepages.add(c);
             }
         }
         suggestcoursepagescount = suggestcoursepages.size();
     }
+
 
     public int getSuggestcoursepagescount() {
         return suggestcoursepagescount;
@@ -213,5 +215,35 @@ public class Course {
 
     public void setSuggestcoursepagescount(int suggestcoursepagescount) {
         this.suggestcoursepagescount = suggestcoursepagescount;
+    }
+
+    public ArrayList<CoursePage> getSuggestcoursebyrelation() {
+        return suggestcoursebyrelation;
+    }
+
+    public boolean isOK(CoursePage coursePage,ArrayList<CoursePage> coursePages)//判断目标是否在list列表之中
+    {
+        boolean flag=false;
+        for (CoursePage c:coursePages
+             ) {
+            if (c.getId().equals(coursePage.getId())){
+                flag =true;
+                break;
+            }
+        }
+        return flag;
+    }
+    public void setSuggestcoursebyrelation() {
+        suggestcoursebyrelation = new ArrayList<>();//根据choosedcourses来获取系统的推荐的课程信息
+        RelationDAO relationDAO = new RelationDAO();
+        CourseDAO courseDAO = new CourseDAO();
+        for (CoursePage c : choosedcourses) {
+            ArrayList<RelationPage> relationPages = (ArrayList<RelationPage>) relationDAO.GetAllByColumn("frontcourseid", c.getId());
+            for (RelationPage r:relationPages) {
+                CoursePage coursePage=courseDAO.GetById(r.getCourseid());
+                if (!isOK(coursePage,choosedcourses) )
+                suggestcoursebyrelation.add(coursePage);
+            }
+        }
     }
 }

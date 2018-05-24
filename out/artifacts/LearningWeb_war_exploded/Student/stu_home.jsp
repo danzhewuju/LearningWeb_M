@@ -34,7 +34,7 @@
                 <ul class="nav">
                     <li><a href="stu_home.jsp" class=""><span>主页</span></a></li>
                     <li>
-                        <a href="#menu1" data-toggle="collapse" class="collapsed " ><span>基本信息</span><i
+                        <a href="#menu1" data-toggle="collapse" class="collapsed "><span>基本信息</span><i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="menu1" class="collapse">
                             <ul class="nav">
@@ -60,7 +60,7 @@
                             <ul class="nav">
                                 <li><a href="stu_home.jsp" class="active ">正在学习课程</a></li>
                                 <li><a href="../AddCourseServlet" class="">选择课程</a></li>
-                                <li><a href="#" class="">课程推荐</a></li>
+                                <li><a href="../SuggestCourse" class="">课程推荐</a></li>
                                 <li><a href="#" class="">课程学习</a></li>
                                 <li><a href="#" class="">成绩查询</a></li>
                                 <li><a href="#" class="">学习交流</a></li>
@@ -97,9 +97,6 @@
                     <div class="panel panel-info">
                         <ul class="breadcrumb">
                             <li>
-                                <a href="AdminHeadPage.jsp">主页</a>
-                            </li>
-                            <li>
                                 <a href="#">我的课程</a>
                             </li>
                             <li class="active">
@@ -112,7 +109,7 @@
                                 <div class="row">
                                     <c:forEach var="i" begin="0" end="${sessionScope.selectedcourses.count}" step="1">
                                         <c:if test="${i!=sessionScope.selectedcourses.count}">
-                                            <div class="col-md-4 col-sm-6 fh5co-project animate-box"
+                                            <div class="col-md-4 fh5co-project animate-box"
                                                  data-animate-effect="fadeIn">
                                                 <a href="../ChooseCourse?courseid=${sessionScope.selectedcourses.coursePages[i].id}"><img
                                                         src="${sessionScope.selectedcourses.coursePages[i].picture}"
@@ -120,7 +117,20 @@
                                                     <p> 课程名称： ${sessionScope.selectedcourses.coursePages[i].name}</p>
                                                     <p>
                                                         课程介绍： ${sessionScope.selectedcourses.coursePages[i].introduction}</p>
-                                                    <p> 进度:${sessionScope.selectedcourses.finishpersentage[i]}%</p>
+                                                    <%--<div class="col-md-10 ">--%>
+
+                                                        <div class="progress" style="width: 300px">
+                                                            <div class="progress-bar " role="progressbar"
+                                                                 aria-valuenow="100"
+                                                                 aria-valuemin="0" aria-valuemax="100"
+                                                                 style="width: ${sessionScope.selectedcourses.finishpersentage[i]}%">
+                                                            </div>
+                                                        </div>
+                                                    <%--</div>--%>
+
+                                                </a>
+
+                                                    <%--<p> 进度:${sessionScope.selectedcourses.finishpersentage[i]}%</p>--%>
                                                 </a>
                                             </div>
 
