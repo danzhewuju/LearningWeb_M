@@ -25,6 +25,8 @@ public class Course {
     private int canchoosecount;//可以选择的课程个数
     private ArrayList<SuggestCourse> suggestCourses;//对应的每一个课程建议课程
     private CoursePage suggestcoursepage; //系统推荐课程将来可以采用好的推荐算法
+    private ArrayList<CoursePage> suggestcoursepages;//按照类别推荐的一系列的课程
+    private int suggestcoursepagescount;//按类别推荐的课程的数目
 
     public Course(StudentPage studentPage) {
         this.studentPage = studentPage;
@@ -36,12 +38,10 @@ public class Course {
 
         suggestCourses = new ArrayList<>();
 
-        for (int i = 0;i<canchoosecount;i++) {
-            SuggestCourse suggestCourse = new SuggestCourse(canchoosecourses.get(i),getChoosedcourses());
+        for (int i = 0; i < canchoosecount; i++) {
+            SuggestCourse suggestCourse = new SuggestCourse(canchoosecourses.get(i), getChoosedcourses());
             suggestCourses.add(suggestCourse);
         }
-
-
 
 
     }
@@ -106,6 +106,7 @@ public class Course {
             choosedcourses.add(courseDAO.GetById(learnPages.get(i).getCourseid()));
         }
         choosedcount = choosedcourses.size();
+        setSuggestcoursepages();
     }
 
     public int getChoosedcount() {
@@ -190,5 +191,27 @@ public class Course {
 
     public void setSuggestcoursepage(CoursePage suggestcoursepage) {
         this.suggestcoursepage = suggestcoursepage;
+    }
+
+    public ArrayList<CoursePage> getSuggestcoursepages() {
+        return suggestcoursepages;
+    }
+
+    public void setSuggestcoursepages() {
+        suggestcoursepages = new ArrayList<>();
+        for (CoursePage c : canchoosecourses) {
+            if (c.getKind().equals(studentPage.getMajor())) {
+                suggestcoursepages.add(c);
+            }
+        }
+        suggestcoursepagescount = suggestcoursepages.size();
+    }
+
+    public int getSuggestcoursepagescount() {
+        return suggestcoursepagescount;
+    }
+
+    public void setSuggestcoursepagescount(int suggestcoursepagescount) {
+        this.suggestcoursepagescount = suggestcoursepagescount;
     }
 }

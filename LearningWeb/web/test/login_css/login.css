@@ -1,0 +1,123 @@
+*{padding: 0;margin: 0;font-family: "微软雅黑";}
+/*清除输入框的默认叉叉和密码框的样式*/
+input::-ms-clear,::-ms-reveal{display:none;}  /* -ms-clear是ie中的文本清除按钮，-ms-reveal是密码框的眼睛图标*/
+body{background-color: #f2f1f1}
+.click{
+	width: 100px;
+	height: 40px;
+	font-size: 16px;
+	line-height: 40px;
+	letter-spacing: 6px;
+	margin: 40px;
+}
+.login{
+	width: 400px;
+	height: 280px;
+	background: #fff;
+	position: absolute;
+	border: 1px #707070 solid;
+	top: 50%;
+	left: 50%;
+	margin-top: -140px;
+	margin-left: -200px;
+	display: none;
+}
+.title{
+	width: 360px;
+	height: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: bold;
+	padding: 0 20px;
+	background: #3f81c1;
+	position: relative;
+}
+.title span{
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../login_images/cha.png) no-repeat center center;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+}
+.user,
+.password{
+	width: 360px;
+	height: 40px;
+	margin: 20px auto 0 auto;
+	border: 1px #e6e6e6 solid;
+	line-height: 40px;
+}
+.boxShadow{
+	box-shadow: 0 0 5px #1195db;
+	-o-box-shadow: 0 0 5px #1195db;
+	-ms-box-shadow: 0 0 5px #1195db;
+	-moz-box-shadow: 0 0 5px #1195db;
+	-webkit-box-shadow: 0 0 5px #1195db;
+}
+.user-logo{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url(../login_images/user.png) no-repeat center center;
+	margin: 5px 5px;
+}
+.password-logo{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url(../login_images/mima.png) no-repeat center center;
+	margin: 5px 5px;
+}
+.form{
+	display: inline-block;
+	vertical-align: top;
+}
+#userNum{
+	width: 266px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	outline: none;
+	border: none;
+	font-size: 18px;
+	color: #707070;
+}
+#passwordNum{
+	width: 266px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	outline: none;
+	border: none;
+	font-size: 18px;
+	color: #707070;
+}
+.password-reset,
+.user-reset{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(../login_images/reset.png) no-repeat center center;
+	display: none;
+	cursor: pointer;
+}
+.loginBtn{
+	display: block;
+	width: 300px;
+	height: 40px;
+	margin: auto;
+	font-size: 20px;
+	letter-spacing: 10px;
+}
+.word{
+	margin: 10px 30px;
+	width: 340px;
+	height: 20px;
+	color: #d81e06;
+	line-height: 20px;
+	font-size: 14px;
+}

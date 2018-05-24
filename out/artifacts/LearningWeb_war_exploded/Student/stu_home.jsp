@@ -10,14 +10,16 @@
 <head>
     <title>我的课程|淘课-基于知识地图的多元化学习网站</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!-- CSS  -->
-    <link rel="stylesheet" href="../css/style_course.css">
+    <!--[if IE]>
+    <meta http-equiv="x-ua-compatible" content="IE=9"/><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MAPS|淘课-基于知识地图的多元化学习网站</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/font-awesome.css">
     <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/chartist-custom.css">
     <link rel="stylesheet" href="../css/ad_main.css">
     <script src="https://use.fontawesome.com/61a9ff3a07.js"></script>
     <%@include file="../config.jsp" %>
@@ -26,21 +28,67 @@
 </head>
 <body>
 <div id="wrapper">
-    <div id="sidebar-nav" class="sidebar" style="color: white">
-            <h2>
-                ${studentpage.name}
-            </h2>
-            <p>
-                你一共选修了<font color="#6495ed" size="9px">${sessionScope.selectedcourses.count}</font>门课程
-            </p>
-        <a class="btn btn-default" href="../AddCourseServlet">添加课程</a>
+    <div id="sidebar-nav" class="sidebar">
+        <div class="sidebar-scroll">
+            <nav>
+                <ul class="nav">
+                    <li><a href="stu_home.jsp" class=""><span>主页</span></a></li>
+                    <li>
+                        <a href="#menu1" data-toggle="collapse" class="collapsed " ><span>基本信息</span><i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <div id="menu1" class="collapse">
+                            <ul class="nav">
+                                <li><a href="StuBaseInfo.jsp" class="">基本信息查询</a></li>
+                                <li><a href="StuEditBaseInfo.jsp" class="">基本信息修改</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#menu2" data-toggle="collapse" class="collapsed"><span>安全信息</span><i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <div id="menu2" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="StuEditSecurityInfo.jsp" class="">修改密码</a></li>
+                                <li><a href="StuSecurityInfo.jsp" class="">找回密码</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#menu3" data-toggle="collapse" class="collapsed"><span>课程中心</span><i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <div id="menu3" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="stu_home.jsp" class="active ">正在学习课程</a></li>
+                                <li><a href="../AddCourseServlet" class="">选择课程</a></li>
+                                <li><a href="#" class="">课程推荐</a></li>
+                                <li><a href="#" class="">课程学习</a></li>
+                                <li><a href="#" class="">成绩查询</a></li>
+                                <li><a href="#" class="">学习交流</a></li>
+                                <li><a href="#" class="">资源分享</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#menu4" data-toggle="collapse" class="collapsed"><span>帮助和反馈</span><i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <div id="menu4" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="#" class="">投诉</a></li>
+                                <li><a href="#" class="">系统通知</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <div class="main">
         <!-- MAIN CONTENT -->
         <div class="main-content">
             <div style="float: right">
-                <a href="StuInfo.jsp"> 个人中心</a>
-                <img src="../Student/img/PC.png" width="40" >
+                <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>
+                <img src="../Student/img/PC.png" width="40">
             </div>
             <div class="container-fluid">
                 <h3 class="page-title">我的课程</h3>
@@ -73,8 +121,6 @@
                                                     <p>
                                                         课程介绍： ${sessionScope.selectedcourses.coursePages[i].introduction}</p>
                                                     <p> 进度:${sessionScope.selectedcourses.finishpersentage[i]}%</p>
-
-                                                    <span>View Course</span>
                                                 </a>
                                             </div>
 
@@ -84,29 +130,31 @@
 
 
                                 </div>
-                                <center><ul class="pagination" >
-                                <li>
-                                    <a href="#">Prev</a>
-                                </li>
-                                <li>
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#">Next</a>
-                                </li>
-                                </ul></center>
+                                <center>
+                                    <ul class="pagination">
+                                        <li>
+                                            <a href="#">Prev</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">4</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">5</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </center>
                             </div>
 
                         </div>
@@ -119,24 +167,6 @@
     </div>
 </div>
 
-
-<!-- jQuery -->
-<script src="../js/jquery.min.js"></script>
-<!-- jQuery Easing -->
-<script src="../js/jquery.easing.1.3.js"></script>
-<!-- Bootstrap -->
-<script src="../js/bootstrap.min.js"></script>
-<!-- Waypoints -->
-<script src="../js/jquery.waypoints.min.js"></script>
-<!-- Stellar Parallax -->
-<script src="../js/jquery.stellar.min.js"></script>
-<!-- countTo -->
-<script src="../js/jquery.countTo.js"></script>
-<!-- Magnific Popup -->
-<script src="../js/jquery.magnific-popup.min.js"></script>
-<script src="../js/magnific-popup-options.js"></script>
-<!-- Main -->
-<script src="../js/main_stu.js"></script>
 
 </body>
 </html>

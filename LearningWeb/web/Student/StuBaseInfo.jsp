@@ -53,6 +53,32 @@
                             </ul>
                         </div>
                     </li>
+                    <li>
+                        <a href="#menu3" data-toggle="collapse" class="collapsed"><span>课程中心</span><i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <div id="menu3" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="stu_home.jsp" class="">正在学习课程</a></li>
+                                <li><a href="#" class="">选择课程</a></li>
+                                <li><a href="#" class="">课程推荐</a></li>
+                                <li><a href="#" class="">课程学习</a></li>
+                                <li><a href="#" class="">成绩查询</a></li>
+                                <li><a href="#" class="">学习交流</a></li>
+                                <li><a href="#" class="">资源分享</a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#menu4" data-toggle="collapse" class="collapsed"><span>帮助和反馈</span><i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <div id="menu4" class="collapse ">
+                            <ul class="nav">
+                                <li><a href="#" class="">投诉</a></li>
+                                <li><a href="#" class="">系统通知</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>

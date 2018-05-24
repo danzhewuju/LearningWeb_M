@@ -21,7 +21,6 @@ public class SuggestCourse {
     }
 
 
-
     public SuggestCourse(CoursePage learningcoursePage, ArrayList<CoursePage> choosedcourse) {
         this.learningcoursePage = learningcoursePage;
         this.choosedcourse = choosedcourse;
@@ -66,28 +65,24 @@ public class SuggestCourse {
 
 
     public void fliter() { //过滤掉已经选择的课程
-     //   ArrayList<CoursePage> record = new ArrayList<>();
-        int len=suggestcount;
+        //   ArrayList<CoursePage> record = new ArrayList<>();
+        int len = suggestcount;
         for (int i = 0; i < len; i++) {
 
 
             for (int j = 0; j < choosedcourse.size(); j++) {
                 if (suggestcourse.get(i).getId().equals(choosedcourse.get(j).getId())) {
-                   suggestcourse.remove(i);
-                   len--;
-                   i--;
-                   break;
+                    suggestcourse.remove(i);
+                    len--;
+                    i--;
+                    break;
                 }
 
             }
 
 
         }
-//        for (int i=0;i<record.size();i++)
-//        {
-//            suggestcourse.remove(i);//剔除掉建议课程中的已选课程
-//        }
-//        suggestcourse.removeAll(record);
-        suggestcount=suggestcourse.size();
+
+        suggestcount = suggestcourse.size();
     }
 }

@@ -17,7 +17,7 @@
     <%--<%@include file="navbar.jsp"%>--%>
 </head>
 <body>
-<div class="htmleaf-content">
+<div class="htmleaf-content modal show">
     <!-- multistep form -->
     <form id="msform" action="../StuLogin" method="post">
         <!-- fieldsets -->

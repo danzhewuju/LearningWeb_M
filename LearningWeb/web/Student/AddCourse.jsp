@@ -38,8 +38,9 @@
                 <ul class="nav">
                     <li><a href="stu_home.jsp" class=""><span>主页</span></a></li>
                     <li>
-                        <a href="#menu1" data-toggle="collapse" class="collapsed"><span>基本信息</span><i
-                                class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <a href="#menu1" data-toggle="collapse" class="collapsed"><span>基本信息</span>
+                            <i
+                                    class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="menu1" class="collapse">
                             <ul class="nav">
                                 <li><a href="StuBaseInfo.jsp" class="">基本信息查询</a></li>
@@ -63,12 +64,12 @@
     </div>
 
     <!-- MAIN -->
-    <div  class="main">
+    <div class="main">
         <!-- MAIN CONTENT -->
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
-                <h3 class="page-title">选课中心</h3>
+                    <h3 class="page-title">选课中心</h3>
 
                     <div class="col-md-2 column" style="color: #00a0f0">
                         <h3>已选课程</h3>
@@ -89,7 +90,7 @@
                         </c:if>
 
                     </div>
-                    <div class="col-md-8 column" >
+                    <div class="col-md-8 column">
                         <h3>
                             可选课程
                         </h3>
@@ -102,18 +103,19 @@
                         <c:if test="${sessionScope.course.canchoosecount!=0}">
 
                             <table class="table table-bordered">
-                                <c:set var="count" value="0" > </c:set>
+                                <c:set var="count" value="0"> </c:set>
 
                                 <c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount/3+1}" step="1">
                                     <tr>
-                                        <c:forEach var="j"  begin="0" end="3" step="1">
+                                        <c:forEach var="j" begin="0" end="3" step="1">
                                             <c:if test="${count<sessionScope.course.canchoosecount}">
                                                 <td>
                                                     <c:if test="${i!=sessionScope.course.canchoosecount}">
                                                         <ul>
-                                                            <li> 名称：${sessionScope.course.canchoosecourses[count].name}</li>
-                                                            <li>教师： ${sessionScope.course.canteacherPages[count].name}</li>
-
+                                                            <li>
+                                                                名称：${sessionScope.course.canchoosecourses[count].name}</li>
+                                                            <li>
+                                                                教师： ${sessionScope.course.canteacherPages[count].name}</li>
 
 
                                                             <c:if test="${sessionScope.course.suggestCourses[count].suggestcount>0}">
@@ -127,7 +129,9 @@
                                                                 </c:forEach>
 
                                                             </c:if>
-                                                            <c:if test="${sessionScope.course.suggestCourses[count].suggestcount==0}"> <li>前驱课程:暂无</li> </c:if>
+                                                            <c:if test="${sessionScope.course.suggestCourses[count].suggestcount==0}">
+                                                                <li>前驱课程:暂无</li>
+                                                            </c:if>
                                                             <a class="btn btn-success"
                                                                href="../AddCourseToDb?courseid=${sessionScope.course.canchoosecourses[count].id}">添加</a>
                                                         </ul>
@@ -140,8 +144,6 @@
                                             <c:set var="count" value="${count+1}"></c:set>
 
 
-
-
                                         </c:forEach>
 
                                     </tr>
@@ -149,18 +151,15 @@
                                 </c:forEach>
 
 
-
-
-
                             </table>
 
-                        <%--<c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount}" step="1">--%>
-                        <%----%>
-                    <%--</c:forEach>--%>
-                    </c:if>
+                            <%--<c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount}" step="1">--%>
+                            <%----%>
+                            <%--</c:forEach>--%>
+                        </c:if>
                     </div>
 
-                    <div class="col-md-2 column"  style="color: red">
+                    <div class="col-md-2 column" style="color: red">
                         <h3>
                             推荐课程
                         </h3>
@@ -172,9 +171,9 @@
                            href="../AddCourseToDb?courseid=${sessionScope.course.suggestcoursepage.id}">添加课程</a>
                     </div>
 
+                </div>
             </div>
-            </div>
-</div>
+        </div>
 
     </div>
 </div>

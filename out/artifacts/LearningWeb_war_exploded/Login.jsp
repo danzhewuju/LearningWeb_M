@@ -17,17 +17,17 @@
     <%--<%@include file="navbar.jsp"%>--%>
 </head>
 <body>
-<div class="htmleaf-content" >
+<div class="htmleaf-content modal show">
     <!-- multistep form -->
     <form id="msform" action="../StuLogin" method="post">
         <!-- fieldsets -->
         <fieldset>
-            <h2 class="fs-title">Log to  my account</h2>
-            <input name="myusername" id="myusername" type="text"  placeholder="Account" autofocus>
+            <h2 class="fs-title">Log to my account</h2>
+            <input name="myusername" id="myusername" type="text" placeholder="Account" autofocus>
             <input name="mypassword" id="mypassword" type="password" placeholder="Password">
             <font color="red" size="3px">${rresult}</font><br><br>
-            <input type="submit" name="submit" class="next action-button" value="Submit" />
-            <input type="reset" name="reste" class="next action-button1" value="Reset" />
+            <input type="submit" name="submit" class="next action-button" value="Submit"/>
+            <input type="reset" name="reste" class="next action-button1" value="Reset"/>
         </fieldset>
     </form>
 </div>

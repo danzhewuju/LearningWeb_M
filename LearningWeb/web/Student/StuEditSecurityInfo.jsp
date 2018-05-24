@@ -24,6 +24,7 @@
 
 
         }
+
         function Check() {
 
             var ps1, ps2;
@@ -108,7 +109,8 @@
                                                 <input type="text" class="form-control"
                                                        value="${sessionScope.studentpage.username}" readonly>
                                             </div>
-                                        </div><br/><br>
+                                        </div>
+                                        <br/><br>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"> 新密码</label>
                                             <div class="col-sm-5">
@@ -116,7 +118,8 @@
                                                        name="password"
                                                        placeholder="Please input new password" onfocus="Clear()">
                                             </div>
-                                        </div><br><br>
+                                        </div>
+                                        <br><br>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label"> 重复密码</label>
                                             <div class="col-sm-5">
@@ -125,7 +128,8 @@
                                                        placeholder="Please copy new password" onchange="Check()">
                                                 <div id="explain"><p></div>
                                             </div>
-                                        </div><br/>
+                                        </div>
+                                        <br/>
                                         <div class="form-group">
 
                                             <div class="col-sm-offset-4 col-sm-2">
