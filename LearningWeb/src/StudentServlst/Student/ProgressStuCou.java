@@ -56,8 +56,7 @@ public class ProgressStuCou {
         ProgressDAO progressDAO=new ProgressDAO();
         CourseDAO courseDAO=new CourseDAO();
         ArrayList<ProgressPage> progressPages= (ArrayList<ProgressPage>) progressDAO.GetAllByColumn("studentid",studentPage.getId());
-        for (ProgressPage p:progressPages
-             ) {
+        for (ProgressPage p:progressPages) {
             if (hashMap.get(p.getCourseid())==null)
             {
              hashMap.put(p.getCourseid(),true);

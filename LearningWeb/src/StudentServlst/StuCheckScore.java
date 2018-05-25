@@ -20,7 +20,7 @@ public class StuCheckScore extends HttpServlet {
         StudentPage studentPage= (StudentPage) request.getSession().getAttribute("studentpage");
         ProgressStuCou progressStuCou=new ProgressStuCou(studentPage);
         request.getSession().setAttribute("progressstucou",progressStuCou);
-        response.sendRedirect("Student/CheckScore");
+        response.sendRedirect("Student/CheckScore.jsp");
 
     }
 }

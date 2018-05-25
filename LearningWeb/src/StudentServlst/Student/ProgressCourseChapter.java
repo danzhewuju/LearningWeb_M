@@ -21,7 +21,7 @@ public class ProgressCourseChapter {
         this.studentPage = studentPage;
         this.coursePage=coursePage;
 
-        setChapterPages();//相管章节的信息保存
+        setChapterPages();//相关章节的信息保存
 
     }
 
@@ -48,6 +48,7 @@ public class ProgressCourseChapter {
     public void setChapterPages() {
         ProgressDAO progressDAO=new ProgressDAO();
         scores=new ArrayList<>();
+        chapterPages=new ArrayList<>();
         ChapterDAO chapterDAO=new ChapterDAO();
         ArrayList<ProgressPage> progressPages= (ArrayList<ProgressPage>) progressDAO.GetAllByColumn("studentid",studentPage.getId(),"courseid",coursePage.getId());
         for (ProgressPage p:progressPages) {

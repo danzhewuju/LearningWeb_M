@@ -13,7 +13,7 @@
         .fixmain{
             position: fixed;
             left: 15%;
-            top: 8%;
+            top: 10%;
             width: 84%;
             height: 100%
         }
