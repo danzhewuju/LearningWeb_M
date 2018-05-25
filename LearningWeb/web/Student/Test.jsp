@@ -6,9 +6,13 @@
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
     <%@include file="../config.jsp" %>
-    <%@include file="navbar.jsp" %>
+
 </head>
 <body>
+<div >
+
+    <jsp:include page="navbar.jsp"></jsp:include>
+</div>
 <div class="leftnav">
 
     <jsp:include page="leftside.jsp"></jsp:include>
@@ -31,7 +35,6 @@
                     <img src="../Student/img/PC.png" width="40">
                 </div>
             </ul>
-
 
 
         </div>

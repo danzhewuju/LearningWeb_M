@@ -1,4 +1,4 @@
-﻿# ************************************************************
+# ************************************************************
 # Sequel Pro SQL dump
 # Version 4541
 #
@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.21)
 # Database: learningweb
-# Generation Time: 2018-05-19 02:49:37 +0000
+# Generation Time: 2018-05-25 13:47:16 +0000
 # ************************************************************
 
 
@@ -39,6 +39,15 @@ CREATE TABLE `addcourse` (
   CONSTRAINT `FK_addcourse_teacher` FOREIGN KEY (`teacherid`) REFERENCES `teacher` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='申请加课表';
 
+LOCK TABLES `addcourse` WRITE;
+/*!40000 ALTER TABLE `addcourse` DISABLE KEYS */;
+
+INSERT INTO `addcourse` (`id`, `teacherid`, `result`, `course`, `precourseid1`, `precourseid2`, `precourseid3`, `precourseid4`)
+VALUES
+	('8aa9e94f637c131701637c2a69030002','5','申请未通过','天文学','null','null','null','null');
+
+/*!40000 ALTER TABLE `addcourse` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table administrator
@@ -95,6 +104,9 @@ VALUES
 	('6','6','5'),
 	('7','8','7'),
 	('8','9','8'),
+	('8aa9e94f637775b10163778a34260008','8aa9e94f637775b10163778606230004','8aa9e94f637775b1016377808fa80001'),
+	('8aa9e94f637775b10163778a4ebb0009','8aa9e94f637775b10163778606230004','8aa9e94f637775b1016377852ce30002'),
+	('8aa9e94f637775b10163778a64bd000a','8aa9e94f637775b10163778606230004','8aa9e94f637775b10163778599e00003'),
 	('9','10','9');
 
 /*!40000 ALTER TABLE `association` ENABLE KEYS */;
@@ -131,10 +143,36 @@ VALUES
 	('6','树和二叉树','1','6'),
 	('7','图','1','7'),
 	('8','动态存储管理','1','8'),
+	('8aa9e94f637775b1016377808fa80001','听','5','1'),
+	('8aa9e94f637775b1016377852ce30002','说','5','2'),
+	('8aa9e94f637775b10163778599e00003','读','5','3'),
+	('8aa9e94f637775b10163778606230004','写','5','4'),
 	('9','查找','1','9');
 
 /*!40000 ALTER TABLE `chapter` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table chat
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `chat`;
+
+CREATE TABLE `chat` (
+  `id` varchar(50) NOT NULL DEFAULT '',
+  `studentid` varchar(50) NOT NULL DEFAULT '',
+  `courseid` varchar(50) NOT NULL DEFAULT '',
+  `time` varchar(50) NOT NULL DEFAULT '',
+  `title` varchar(200) DEFAULT '',
+  `content` text NOT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Chat_Student` (`studentid`),
+  KEY `Chat_Course` (`courseid`),
+  CONSTRAINT `Chat_Course` FOREIGN KEY (`courseid`) REFERENCES `course` (`id`),
+  CONSTRAINT `Chat_Student` FOREIGN KEY (`studentid`) REFERENCES `student` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table course
@@ -164,14 +202,15 @@ VALUES
 	('11','初级历史','6','../img/WX20170624-040847.png','历史','历史'),
 	('12','高级历史','6','../img/WX20170624-040847.png','高级历史','历史'),
 	('13','初级经济学','7','../img/WX20170624-040847.png','很好的经济学','经济学'),
-	('14','高级经济学','7','../img/WX20170624-040847.png','无','经济学'),
-	('2','C语言','1','../img/WX20170624-040847.png','无','计算机'),
-	('3','计算机网络','2','../img/WX20170624-040847.png','无','计算机'),
-	('4','计算机组成','4','../img/WX20170624-040847.png','无','计算机'),
-	('5','小学语文','5','../img/WX20170624-040847.png','无','文学'),
-	('6','初中语文','5','../img/WX20170624-040847.png','无','文学'),
-	('7','高中语文','5','../img/WX20170624-040847.png','无','文学'),
-	('8','大学语文A1\r\n\r\n','5','../img/WX20170624-040847.png','无','文学'),
+	('14','高级经济学','7','../img/WX20170624-040847.png','每个人都要学习的经济学','经济学'),
+	('2','C语言','1','../img/WX20170624-040847.png','基础编程','计算机'),
+	('3','计算机网络','2','../img/WX20170624-040847.png','考研科目之一','计算机'),
+	('4','计算机组成','4','../img/WX20170624-040847.png','计算机专业必修课，你值得拥有','计算机'),
+	('5','小学语文','5','../img/WX20170624-040847.png','小学生必修课','文学'),
+	('6','初中语文','5','../img/WX20170624-040847.png','初中语文必修课','文学'),
+	('7','高中语文','5','../img/WX20170624-040847.png','高中语文必修课','文学'),
+	('8','大学语文A1','5','../img/WX20170624-040847.png','大学语文必修课','历史学'),
+	('8aa9e94f637680b301637681bc560000','计算机组成高级','8aa9e94f637644a301637646fb030000','../img/WX20170624-040847.png','计算机组成的进阶课程','计算机'),
 	('9','大学语文B','5','../img/WX20170624-040847.png','无','文学');
 
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
@@ -226,7 +265,7 @@ LOCK TABLES `exam` WRITE;
 
 INSERT INTO `exam` (`id`, `chapterid`, `answer`, `address`)
 VALUES
-	('297e4783621dd4b401621dd69b5e0000','2','B,D,C,A,A','/data/examtest/链表.jpg');
+	('297e4783621dd4b401621dd69b5e0000','2','A,D,B,B,C','/data/examtest/链表.jpg');
 
 /*!40000 ALTER TABLE `exam` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -257,7 +296,9 @@ VALUES
 	('2','2','5'),
 	('3','3','11'),
 	('4','1','13'),
-	('5','4','5');
+	('4028abda6381123a016381144baf0001','1','2'),
+	('5','4','5'),
+	('8aa9e94f637775b10163777827ff0000','1','5');
 
 /*!40000 ALTER TABLE `learn` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -288,10 +329,10 @@ LOCK TABLES `progress` WRITE;
 
 INSERT INTO `progress` (`id`, `studentid`, `courseid`, `chapterid`, `examscore`)
 VALUES
-	('1','1','2','1','90'),
+	('1','1','1','1','59'),
 	('2','2','3','1','90'),
-	('297e478362c1d80e0162c1e20e810000','1','1','2','100'),
-	('3','1','1','1','92');
+	('3','1','1','1','92'),
+	('4028abda6381123a016381138f200000','1','1','2','80');
 
 /*!40000 ALTER TABLE `progress` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -327,6 +368,7 @@ VALUES
 	('6','8','7'),
 	('7','9','8'),
 	('8','7','6'),
+	('8aa9e94f6376ce50016376ceedf60000','8aa9e94f637680b301637681bc560000','4'),
 	('9','6','5');
 
 /*!40000 ALTER TABLE `relation` ENABLE KEYS */;
@@ -358,7 +400,7 @@ LOCK TABLES `student` WRITE;
 
 INSERT INTO `student` (`id`, `username`, `password`, `name`, `birthday`, `gendar`, `status`, `grade`, `email`, `major`, `picture`)
 VALUES
-	('1','root1','root',' 唐湘龙','2017-06-06','男',' 本科',' 3',' 7993@qq.com',' 计算机','stuimg/女孩1.jpeg'),
+	('1','root1','root',' 唐湘龙','2017-06-06','男',' 本科',' 3',' 7993@qq.com','计算机','stuimg/女孩1.jpeg'),
 	('2','root2','123456','余豪','2017-06-27','男','本科','3','1','计算机','stuimg/女孩2.jpg'),
 	('3','root3','root','马灿','2017-06-24','男','本科','3','7933','计算机','stuimg/女孩2.jpg'),
 	('4','root4','root','李冲','2017-06-24','男','本科','3','7933','计算机','stuimg/女孩2.jpg');

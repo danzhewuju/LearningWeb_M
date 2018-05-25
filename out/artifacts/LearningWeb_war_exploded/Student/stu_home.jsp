@@ -62,7 +62,7 @@
                                 <li><a href="../AddCourseServlet" class="">选择课程</a></li>
                                 <li><a href="../SuggestCourse" class="">课程推荐</a></li>
                                 <li><a href="#" class="">课程学习</a></li>
-                                <li><a href="#" class="">成绩查询</a></li>
+                                <li><a href="../StuCheckScore" class="">成绩查询</a></li>
                                 <li><a href="#" class="">学习交流</a></li>
                                 <li><a href="#" class="">资源分享</a></li>
 
@@ -119,7 +119,7 @@
                                                         课程介绍： ${sessionScope.selectedcourses.coursePages[i].introduction}</p>
                                                     <%--<div class="col-md-10 ">--%>
 
-                                                        <div class="progress" style="width: 300px">
+                                                        <div class="progress progress-striped active" style="width: 300px">
                                                             <div class="progress-bar " role="progressbar"
                                                                  aria-valuenow="100"
                                                                  aria-valuemin="0" aria-valuemax="100"

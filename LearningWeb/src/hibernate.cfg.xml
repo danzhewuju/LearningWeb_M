@@ -20,6 +20,7 @@
         <property name="connection.password">root</property>
 
         <property name="jdbc.batch_size">23</property>
+
         <mapping class="Entity.AdministratorEntity"/>
         <mapping class="Entity.ChapterEntity"/>
         <mapping class="Entity.CourseEntity"/>
@@ -32,5 +33,6 @@
         <mapping class="Entity.AssociationEntity"/>
         <mapping class="Entity.LearnEntity"/>
         <mapping class="Entity.RelationEntity"/>
+        <mapping class="Entity.ChatEntity"/>
     </session-factory>
 </hibernate-configuration>
