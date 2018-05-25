@@ -42,7 +42,6 @@ public class ProgressStuCou {
              ) {
             ProgressCourseChapter progressCourseChapter=new ProgressCourseChapter(studentPage,c);
             progressCourseChapters.add(progressCourseChapter);
-
         }
 
     }
@@ -66,6 +65,7 @@ public class ProgressStuCou {
             }
         }
         count=coursePages.size();
+        hashMap.clear();
     }
 
     public int getCount() {

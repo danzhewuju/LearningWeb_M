@@ -40,9 +40,9 @@
 </head>
 <body>
 <div id="tf-home">
-    <div class="overlay">
+    <div class="overlay" >
         <div id="sticky-anchor"></div>
-        <nav id="tf-menu" class="navbar navbar-default">
+        <nav id="tf-menu" class="navbar navbar-default" >
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -56,7 +56,7 @@
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/home.jsp"> Home</a></li>
                         <li><a href="/showcourse.jsp"> Course</a></li>
