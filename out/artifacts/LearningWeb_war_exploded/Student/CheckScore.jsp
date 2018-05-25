@@ -24,7 +24,7 @@
                     <a href="#">课程中心</a>
                 </li>
                 <li class="active">
-                    Data
+                    成绩查询
                 </li>
                 <div style="float: right">
                     <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>
@@ -79,7 +79,8 @@
                                     <span class="glyphicon glyphicon-ok" style="color: rgb(0, 112, 0);"> 通过</span>
                                 </c:when>
                                 <c:when test="${prosc.scores[status.index]<60}">
-                                    <span class="glyphicon glyphicon-warning-sign" style="color: rgb(255, 0, 0);"> 再接再厉</span>
+                                    <span class="glyphicon glyphicon-warning-sign"
+                                          style="color: rgb(255, 0, 0);"> 再接再厉</span>
                                 </c:when>
                             </c:choose>
 
