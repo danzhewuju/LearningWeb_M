@@ -12,9 +12,11 @@ public class ChatDao {
 
     public boolean isOk(ChatPage chatPage) {
         boolean flag = false;
-        ChatPage chatPage1 = GetById(chatPage.getId());
-        if (chatPage == null) flag = false;
-        else flag = true;
+        if (chatPage.getId() != null) {
+            ChatPage chatPage1 = GetById(chatPage.getId());
+            if (chatPage == null) flag = false;
+            else flag = true;
+        }
         return flag;
     }
 
@@ -191,27 +193,31 @@ public class ChatDao {
 
     public List<ChatPage> GetAllByColumn(String column, String key) {
         Session session = HibernateUtils.getSession();
+        List<ChatPage> chatPages = new ArrayList<>();
         String hql = "from ChatEntity where " + column + " = " + "'" + key + "'";
-        List<ChatEntity> chatEntities = session.createQuery(hql).list();
-        List<ChatPage> chatPages = new ArrayList();
-        if (chatEntities != null && chatEntities.size() > 0) {
-            for (ChatEntity chatEntity : chatEntities) {
-                ChatPage chatPage = new ChatPage();
+        try {
+            List<ChatEntity> chatEntities = session.createQuery(hql).list();
+            if (chatEntities != null && chatEntities.size() > 0) {
+                for (ChatEntity chatEntity : chatEntities) {
+                    ChatPage chatPage = new ChatPage();
+                    chatPage.setId(chatEntity.getId());
+                    chatPage.setContent(chatEntity.getContent());
+                    chatPage.setCourseid(chatEntity.getCourseid());
+                    chatPage.setTitle(chatEntity.getTitle());
+                    chatPage.setStudentid(chatEntity.getStudentid());
+                    chatPage.setTime(chatEntity.getTime());
+                    chatPage.setStatus(chatEntity.getStatus());
 
-                chatPage.setId(chatEntity.getId());
-                chatPage.setContent(chatEntity.getContent());
-                chatPage.setCourseid(chatEntity.getCourseid());
-                chatPage.setTitle(chatEntity.getTitle());
-                chatPage.setStudentid(chatEntity.getStudentid());
-                chatPage.setTime(chatEntity.getTime());
-                chatPage.setStatus(chatEntity.getStatus());
-
-                /*BeanUtils.copyProperties(studentEntity, studentPage);*/
-                chatPages.add(chatPage);
+                    /*BeanUtils.copyProperties(studentEntity, studentPage);*/
+                    chatPages.add(chatPage);
+                }
             }
-        }
 
+        } catch (Exception e) {
+
+        }
         HibernateUtils.closeSession(session);
+
         return chatPages;
     }
 
@@ -222,24 +228,26 @@ public class ChatDao {
         Session session = HibernateUtils.getSession();
         String hql = "from ChatEntity where " + column1 + "= ? and " + column2 + "= ?";
         List<ChatEntity> chatEntities = session.createQuery(hql).setParameter(0, key1).setParameter(1, key2).list();
-        List<ChatPage> chatPages = new ArrayList();
-        if (chatEntities != null && chatEntities.size() > 0) {
-            for (ChatEntity chatEntity : chatEntities) {
-                ChatPage chatPage = new ChatPage();
+        List<ChatPage> chatPages = new ArrayList<>();
+        try {
+            if (chatEntities != null && chatEntities.size() > 0) {
 
-                chatPage.setId(chatEntity.getId());
-                chatPage.setContent(chatEntity.getContent());
-                chatPage.setCourseid(chatEntity.getCourseid());
-                chatPage.setTitle(chatEntity.getTitle());
-                chatPage.setStudentid(chatEntity.getStudentid());
-                chatPage.setTime(chatEntity.getTime());
-                chatPage.setStatus(chatEntity.getStatus());
-
-                /*BeanUtils.copyProperties(studentEntity, studentPage);*/
-                chatPages.add(chatPage);
+                for (ChatEntity chatEntity : chatEntities) {
+                    ChatPage chatPage = new ChatPage();
+                    chatPage.setId(chatEntity.getId());
+                    chatPage.setContent(chatEntity.getContent());
+                    chatPage.setCourseid(chatEntity.getCourseid());
+                    chatPage.setTitle(chatEntity.getTitle());
+                    chatPage.setStudentid(chatEntity.getStudentid());
+                    chatPage.setTime(chatEntity.getTime());
+                    chatPage.setStatus(chatEntity.getStatus());
+                    /*BeanUtils.copyProperties(studentEntity, studentPage);*/
+                    chatPages.add(chatPage);
+                }
             }
-        }
+        } catch (Exception e) {
 
+        }
         HibernateUtils.closeSession(session);
         return chatPages;
     }

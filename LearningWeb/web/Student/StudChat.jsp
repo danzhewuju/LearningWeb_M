@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<div >
+<div>
 
     <jsp:include page="navbar.jsp"></jsp:include>
 </div>
@@ -38,17 +38,39 @@
 
             <div class="container">
                 <div class="row clearfix">
-                    <div class="col-md-4 column">
-                        <img alt="140x140" src="${sessionScope.studentpage.picture}" />
-                        <ul class="list-unstyled">
-                            <li>
-                                ${sessionScope.studentpage.name}
-                            </li>
 
+                    <div class="col-md-3 column">
+                        <div class="col-md-4  ">
+                            <img alt="图片暂时丢失" src="${sessionScope.studentpage.picture}" class="img-rounded  " href=""
+                                 style="width: 100px;height: 100px"/>
+                        </div>
+                        <div class="col-md-8 ">
 
-                        </ul>
+                            <ul>
+                                <li>
+                                    ${sessionScope.studentpage.name}
+                                </li>
+                                <li>
+                                    ${sessionScope.studentpage.gendar}
+                                </li>
+                                <li>
+                                    ${sessionScope.studentpage.major}
+                                </li>
+                                <li>
+                                    ${sessionScope.studentpage.status}
+                                </li>
+                                <li>
+                                    ${sessionScope.studentpage.birthday}
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+
+                            <p class="text-center">this is test block</p>
+                        </div>
+
                     </div>
-                    <div class="col-md-8 column">
+                    <div class="col-md-9 column">
                         <h3>
                             欢迎进入课后的习题讨论
                         </h3>
@@ -59,88 +81,38 @@
                                     编号
                                 </th>
                                 <th>
-                                    产品
+                                    课程
                                 </th>
                                 <th>
-                                    交付时间
+                                    课程介绍
                                 </th>
                                 <th>
-                                    状态
+                                    进入围观
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <c:forEach var="c" items="${sessionScope.course.choosedcourses}" varStatus="status">
+                                <tr class="success">
 
                                     <td>
-                                        1
+                                        ${status.index+1}
                                     </td>
                                     <td>
-                                        TB - Monthly
+                                        <img src="${c.picture}" width="70" >
+                                        ${c.name}
                                     </td>
                                     <td>
-                                        01/04/2012
+                                        ${c.introduction}
                                     </td>
+
                                     <td>
-                                        Default
+                                        <a href="../StuBroChat?index=${status.index}" ><button class="btn btn-danger">进入</button></a>
                                     </td>
-                            </tr>
-                            <tr class="success">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Approved
-                                </td>
-                            </tr>
-                            <tr class="error">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    02/04/2012
-                                </td>
-                                <td>
-                                    Declined
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    03/04/2012
-                                </td>
-                                <td>
-                                    Pending
-                                </td>
-                            </tr>
-                            <tr class="info">
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    04/04/2012
-                                </td>
-                                <td>
-                                    Call in to confirm
-                                </td>
-                            </tr>
+                                </tr>
+
+                            </c:forEach>
+
                             </tbody>
                         </table>
                     </div>

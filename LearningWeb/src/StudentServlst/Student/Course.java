@@ -7,10 +7,6 @@ import DAO.TeacherDAO;
 import Page.*;
 
 import java.util.ArrayList;
-
-/**
- * Created by 16689 on 2017/7/1.
- */
 public class Course {
     private StudentPage studentPage;//学生的个人信息
     private CoursePage learningcourse;//学生选择的课程

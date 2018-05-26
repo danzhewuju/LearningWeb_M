@@ -47,11 +47,15 @@ public class Chat {
     public void setChatPapersBycid(CoursePage coursePage) {
         ChatDao chatDao = new ChatDao();
         ArrayList<ChatPage> chatPages = (ArrayList<ChatPage>) chatDao.GetAllByColumn("courseid", coursePage.getId());
-        chatPapersBycid = new ArrayList<>();
-        for (ChatPage chatPage : chatPages) {
-            ChatPaper chatPaper = new ChatPaper(chatPage);
-            chatPapersBycid.add(chatPaper);
+        chatPapersBycid = null;
+        if (chatPages.size() > 0) {
+            chatPapersBycid = new ArrayList<>();
+            for (ChatPage chatPage : chatPages) {
+                ChatPaper chatPaper = new ChatPaper(chatPage);
+                chatPapersBycid.add(chatPaper);
+            }
         }
+
     }
 
     public ArrayList<ChatPaper> getChatPapersBysid() {
@@ -62,10 +66,14 @@ public class Chat {
     public void setChatPapersBysid(StudentPage studentPage) {
         ChatDao chatDao = new ChatDao();
         ArrayList<ChatPage> chatPages = (ArrayList<ChatPage>) chatDao.GetAllByColumn("studentid", studentPage.getId());
-        chatPapersBysid = new ArrayList<>();
-        for (ChatPage chatPage : chatPages) {
-            ChatPaper chatPaper = new ChatPaper(chatPage);
-            chatPapersBysid.add(chatPaper);
+        chatPapersBysid = null;
+        if (chatPages.size() > 0) {
+            chatPapersBysid = new ArrayList<>();
+            for (ChatPage chatPage : chatPages) {
+                ChatPaper chatPaper = new ChatPaper(chatPage);
+                chatPapersBysid.add(chatPaper);
+
+            }
 
         }
 

@@ -34,7 +34,7 @@
 
             <c:forEach var="prosc" items="${sessionScope.progressstucou.progressCourseChapters}" varStatus="statusp">
 
-            <h3 class="text-center">${prosc.coursePage.name}查询结果</h3>
+            <h3 class="text-center">《${prosc.coursePage.name}》</h3>
             <table class="table table-striped">
                 <thead>
                 <tr>

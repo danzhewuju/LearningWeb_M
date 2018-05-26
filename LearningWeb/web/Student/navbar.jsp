@@ -32,7 +32,7 @@
 
             <a class="navbar-brand logo" href="../home.jsp"><img src="../img/logo.png" width="100"></a>
             <ul style="float: right" id="topnav">
-                <li><a href="/home.jsp"> <span class="glyphicon glyphicon-th-large"
+                <li><a href="/home.jsp"> <span class="glyphicon glyphicon-home"
                                                style="color: rgb(235, 123, 126); "> 主页</span></a></li>
                 <li><a href="/showcourse.jsp"> <span class="glyphicon glyphicon-inbox"
                                                      style="color: rgb(235, 123, 126); "> 课程</span></a>
