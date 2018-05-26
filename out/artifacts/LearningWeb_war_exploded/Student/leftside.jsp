@@ -71,7 +71,7 @@
                             <li><a href="../SuggestCourse" class="">课程推荐</a></li>
                             <li><a href="#" class="">课程学习</a></li>
                             <li><a href="../StuCheckScore" class="">成绩查询</a></li>
-                            <li><a href="#" class="">学习交流</a></li>
+                            <li><a href="../StuChat" class="">学习交流</a></li>
                             <li><a href="#" class="">资源分享</a></li>
 
                         </ul>
