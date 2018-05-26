@@ -12,6 +12,7 @@
     <style type="text/css">
         .fixmain{
             position: fixed;
+            overflow: auto;
             left: 15%;
             top: 10%;
             width: 84%;
@@ -36,7 +37,7 @@
 </head>
 <body>
 
-<div id="sidebar-nav" class="sidebar">
+<div id="sidebar-nav" class="sidebar" style="overflow: auto">
     <div class="sidebar-scroll">
         <nav>
             <ul class="nav">
@@ -69,7 +70,7 @@
                             <li><a href="stu_home.jsp" class="active ">正在学习课程</a></li>
                             <li><a href="../AddCourseServlet" class="">选择课程</a></li>
                             <li><a href="../SuggestCourse" class="">课程推荐</a></li>
-                            <li><a href="#" class="">课程学习</a></li>
+                            <li><a href="stu_home.jsp" class="">课程学习</a></li>
                             <li><a href="../StuCheckScore" class="">成绩查询</a></li>
                             <li><a href="../StuChat" class="">学习交流</a></li>
                             <li><a href="#" class="">资源分享</a></li>

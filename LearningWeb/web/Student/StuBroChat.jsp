@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="container fixmain">
+<div class="container fixmain ">
     <div class="row clearfix">
         <div class="col-md-12 column ">
             <ul class="breadcrumb">
@@ -36,7 +36,7 @@
                 </div>
             </ul>
 
-            <div class="container">
+            <div class="container ">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <h3>
@@ -54,11 +54,19 @@
                                 <c:forEach var="c" items="${sessionScope.chat.chatPapersBycid}" varStatus="status">
 
                                     <div class="well">
-                                        <p class="small">${status.index+1}楼</p>
-                                        <h3 class="text-success" >
-                                               主题： ${c.titles}
+
+                                        <div class="col-md-12">
+                                            <p class=" col-md-6" style="left: -5%">  ${status.index+1}楼</p>
+                                            <c:if test="${c.studentPage.id==sessionScope.studentpage.id}">
+                                                <span class="glyphicon glyphicon-home  text-right col-md-6"
+                                                      style="color: rgb(255, 140, 60)"></span>
+                                            </c:if>
+                                        </div>
+
+                                        <h3 class="text-success ">
+                                            主题： ${c.titles}
                                         </h3>
-                                        <p >
+                                        <p>
                                                 ${c.content}
                                         </p>
                                         <p class="text-right"> 发帖人:${c.studentPage.name} 发帖时间：${c.time}</p>
@@ -66,11 +74,14 @@
                                     </div>
 
                                 </c:forEach>
+                                <p>over
+                                <p>
+                                <p>
 
 
                             </div>
                             <div class="col-md-6 column">
-                                <form role="form" method="post" action="../StuBroChat" >
+                                <form role="form" method="post" action="../StuBroChat">
 
                                     <div class="form-group">
                                         <input type="text" class="form-control text-danger " id="exampleInputPassword1"

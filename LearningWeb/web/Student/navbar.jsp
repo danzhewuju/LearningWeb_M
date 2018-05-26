@@ -26,7 +26,7 @@
 </head>
 <body>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="container" style="width: 100%;height: 7%; background-color: rgb(39,44,52)">
+<div class="container" style="width: 100%;height: 7%; background-color: rgb(39,44,52) ;overflow: auto">
     <div class="row clearfix">
         <div class="collapse navbar-collapse" >
 
