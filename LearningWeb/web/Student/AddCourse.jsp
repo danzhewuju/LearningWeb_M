@@ -8,175 +8,147 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <title>添加课程</title>
     <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="x-ua-compatible" content="IE=9"/><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MAPS|淘课-基于知识地图的多元化学习网站</title>
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/font-awesome.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/chartist-custom.css">
-    <link rel="stylesheet" href="../css/ad_main.css">
-    <%--<script src="https://use.fontawesome.com/61a9ff3a07.js"></script>--%>
     <%@include file="../config.jsp" %>
-    <%@include file="../navbar_blue.jsp" %>
 
 </head>
 <body>
 <%--<script src="js/jquery-2.1.1.js"></script>--%>
 <%--<!-- Include all compiled plugins (below), or include individual files as needed -->--%>
 <%--<script src="js/bootstrap.min.js"></script>--%>
-<div id="wrapper">
+<div>
 
-    <!-- LEFT SIDEBAR -->
-    <div id="sidebar-nav" class="sidebar">
-        <div class="sidebar-scroll">
-            <nav>
-                <ul class="nav">
-                    <li><a href="stu_home.jsp" class=""><span>主页</span></a></li>
-                    <li>
-                        <a href="#menu1" data-toggle="collapse" class="collapsed"><span>基本信息</span>
-                            <i
-                                    class="icon-submenu fa fa-angle-double-right"></i></a>
-                        <div id="menu1" class="collapse">
-                            <ul class="nav">
-                                <li><a href="StuBaseInfo.jsp" class="">基本信息查询</a></li>
-                                <li><a href="StuEditBaseInfo.jsp" class="">基本信息修改</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#menu2" data-toggle="collapse" class="collapsed"><span>安全信息</span><i
-                                class="icon-submenu fa fa-angle-double-right"></i></a>
-                        <div id="menu2" class="collapse ">
-                            <ul class="nav">
-                                <li><a href="StuEditSecurityInfo.jsp" class="">修改密码</a></li>
-                                <li><a href="StuSecurityInfo.jsp" class="">找回密码</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <jsp:include page="navbar.jsp"></jsp:include>
+</div>
+<div class="leftnav">
 
-    <!-- MAIN -->
-    <div class="main">
-        <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <h3 class="page-title">选课中心</h3>
+    <jsp:include page="leftside.jsp"></jsp:include>
+</div>
+<!-- MAIN -->
+<div class="container fixmain">
+    <div class="row clearfix">
+        <div class="col-md-12 column ">
+            <ul class="breadcrumb">
 
-                    <div class="col-md-2 column" style="color: #00a0f0">
-                        <h3>已选课程</h3>
-                        <c:if test="${sessionScope.course.choosedcount==0}">
-                            <h3>快添加右侧课程</h3>
-                        </c:if>
-                        <c:if test="${sessionScope.course.choosedcount!=0}">
-                            <ul>
-                                <c:forEach var="i" begin="0" end="${sessionScope.course.choosedcount}" step="1">
-                                    <c:if test="${i!=sessionScope.course.choosedcount}">
-                                        <li>
-                                            <a href="../ChooseCourse?courseid=${sessionScope.course.choosedcourses[i].id}">${sessionScope.course.choosedcourses[i].name}</a>
-                                        </li>
-                                    </c:if>
+                <li>
+                    <a href="#">课程中心</a>
+                </li>
+                <li class="active">
+                    成绩查询
+                </li>
+                <div style="float: right">
+                    <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>
+                    <img src="../Student/img/PC.png" width="40">
+                </div>
+            </ul>
 
-                                </c:forEach>
-                            </ul>
-                        </c:if>
+            <div class="col-md-2 column" style="color: #00a0f0">
+                <h3>已选课程</h3>
+                <c:if test="${sessionScope.course.choosedcount==0}">
+                    <h3>快添加右侧课程</h3>
+                </c:if>
+                <c:if test="${sessionScope.course.choosedcount!=0}">
+                    <ul>
+                        <c:forEach var="i" begin="0" end="${sessionScope.course.choosedcount}" step="1">
+                            <c:if test="${i!=sessionScope.course.choosedcount}">
+                                <li>
+                                    <a href="../ChooseCourse?courseid=${sessionScope.course.choosedcourses[i].id}">${sessionScope.course.choosedcourses[i].name}</a>
+                                </li>
+                            </c:if>
 
-                    </div>
-                    <div class="col-md-8 column">
-                        <h3>
-                            可选课程
-                        </h3>
-                        <c:if test="${sessionScope.course.canchoosecount==0}">
-                            <h2>
-                                系统资源库故障，等待恢复
-                            </h2>
+                        </c:forEach>
+                    </ul>
+                </c:if>
 
-                        </c:if>
-                        <c:if test="${sessionScope.course.canchoosecount!=0}">
+            </div>
+            <div class="col-md-8 column">
+                <h3>
+                    可选课程
+                </h3>
+                <c:if test="${sessionScope.course.canchoosecount==0}">
+                    <h2>
+                        系统资源库故障，等待恢复
+                    </h2>
 
-                            <table class="table table-bordered">
-                                <c:set var="count" value="0"> </c:set>
+                </c:if>
+                <c:if test="${sessionScope.course.canchoosecount!=0}">
 
-                                <c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount/3+1}" step="1">
-                                    <tr>
-                                        <c:forEach var="j" begin="0" end="3" step="1">
-                                            <c:if test="${count<sessionScope.course.canchoosecount}">
-                                                <td>
-                                                    <c:if test="${i!=sessionScope.course.canchoosecount}">
-                                                        <ul>
+                    <table class="table table-bordered">
+                        <c:set var="count" value="0"> </c:set>
+
+                        <c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount/3+1}" step="1">
+                            <tr>
+                                <c:forEach var="j" begin="0" end="3" step="1">
+                                    <c:if test="${count<sessionScope.course.canchoosecount}">
+                                        <td>
+                                            <c:if test="${i!=sessionScope.course.canchoosecount}">
+                                                <ul>
+                                                    <li>
+                                                        名称：${sessionScope.course.canchoosecourses[count].name}</li>
+                                                    <li>
+                                                        教师： ${sessionScope.course.canteacherPages[count].name}</li>
+
+
+                                                    <c:if test="${sessionScope.course.suggestCourses[count].suggestcount>0}">
+
+                                                        <c:forEach var="j" begin="0"
+                                                                   end="${sessionScope.course.suggestCourses[count].suggestcount-1}"
+                                                                   step="1">
                                                             <li>
-                                                                名称：${sessionScope.course.canchoosecourses[count].name}</li>
-                                                            <li>
-                                                                教师： ${sessionScope.course.canteacherPages[count].name}</li>
-
-
-                                                            <c:if test="${sessionScope.course.suggestCourses[count].suggestcount>0}">
-
-                                                                <c:forEach var="j" begin="0"
-                                                                           end="${sessionScope.course.suggestCourses[count].suggestcount-1}"
-                                                                           step="1">
-                                                                    <li>
-                                                                        <a href="../AddCourseToDb?courseid=${sessionScope.course.suggestCourses[count].suggestcourse[j].id}">前驱课程:${sessionScope.course.suggestCourses[count].suggestcourse[j].name}</a>
-                                                                    </li>
-                                                                </c:forEach>
-
-                                                            </c:if>
-                                                            <c:if test="${sessionScope.course.suggestCourses[count].suggestcount==0}">
-                                                                <li>前驱课程:暂无</li>
-                                                            </c:if>
-                                                            <a class="btn btn-success"
-                                                               href="../AddCourseToDb?courseid=${sessionScope.course.canchoosecourses[count].id}">添加</a>
-                                                        </ul>
+                                                                <a href="../AddCourseToDb?courseid=${sessionScope.course.suggestCourses[count].suggestcourse[j].id}">前驱课程:${sessionScope.course.suggestCourses[count].suggestcourse[j].name}</a>
+                                                            </li>
+                                                        </c:forEach>
 
                                                     </c:if>
+                                                    <c:if test="${sessionScope.course.suggestCourses[count].suggestcount==0}">
+                                                        <li>前驱课程:暂无</li>
+                                                    </c:if>
+                                                    <a class="btn btn-success"
+                                                       href="../AddCourseToDb?courseid=${sessionScope.course.canchoosecourses[count].id}">添加</a>
+                                                </ul>
 
-
-                                                </td>
                                             </c:if>
-                                            <c:set var="count" value="${count+1}"></c:set>
 
 
-                                        </c:forEach>
+                                        </td>
+                                    </c:if>
+                                    <c:set var="count" value="${count+1}"></c:set>
 
-                                    </tr>
 
                                 </c:forEach>
 
+                            </tr>
 
-                            </table>
+                        </c:forEach>
 
-                            <%--<c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount}" step="1">--%>
-                            <%----%>
-                            <%--</c:forEach>--%>
-                        </c:if>
-                    </div>
 
-                    <div class="col-md-2 column" style="color: red">
-                        <h3>
-                            推荐课程
-                        </h3>
-                        <p>
-                            名称：${sessionScope.course.suggestcoursepage.name}
-                        </p>
+                    </table>
 
-                        <a class="btn btn-success"
-                           href="../AddCourseToDb?courseid=${sessionScope.course.suggestcoursepage.id}">添加课程</a>
-                    </div>
-
-                </div>
+                    <%--<c:forEach var="i" begin="0" end="${sessionScope.course.canchoosecount}" step="1">--%>
+                    <%----%>
+                    <%--</c:forEach>--%>
+                </c:if>
             </div>
-        </div>
 
+            <div class="col-md-2 column" style="color: red">
+                <h3>
+                    推荐课程
+                </h3>
+                <p>
+                    名称：${sessionScope.course.suggestcoursepage.name}
+                </p>
+
+                <a class="btn btn-success"
+                   href="../AddCourseToDb?courseid=${sessionScope.course.suggestcoursepage.id}">添加课程</a>
+            </div>
+
+        </div>
     </div>
 </div>
+
 
 </body>
 </html>

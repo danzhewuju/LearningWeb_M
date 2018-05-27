@@ -9,151 +9,91 @@
 <html>
 <head>
     <title>学生课程推荐</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/font-awesome.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/chartist-custom.css">
-    <link rel="stylesheet" href="../css/ad_main.css">
-    <script src="https://use.fontawesome.com/61a9ff3a07.js"></script>
+    <meta charset="utf-8">
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
     <%@include file="../config.jsp" %>
-    <%@include file="../navbar_blue.jsp" %>
 </head>
 <body>
-<div id="wrapper">
-    <div id="sidebar-nav" class="sidebar">
-        <div class="sidebar-scroll">
-            <nav>
-                <ul class="nav">
-                    <li><a href="stu_home.jsp" class=""><span>主页</span></a></li>
-                    <li>
-                        <a href="#menu1" data-toggle="collapse" class="collapsed "><span>基本信息</span><i
-                                class="icon-submenu fa fa-angle-double-right"></i></a>
-                        <div id="menu1" class="collapse">
-                            <ul class="nav">
-                                <li><a href="StuBaseInfo.jsp" class="">基本信息查询</a></li>
-                                <li><a href="StuEditBaseInfo.jsp" class="">基本信息修改</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#menu2" data-toggle="collapse" class="collapsed"><span>安全信息</span><i
-                                class="icon-submenu fa fa-angle-double-right"></i></a>
-                        <div id="menu2" class="collapse ">
-                            <ul class="nav">
-                                <li><a href="StuEditSecurityInfo.jsp" class="">修改密码</a></li>
-                                <li><a href="StuSecurityInfo.jsp" class="">找回密码</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#menu3" data-toggle="collapse" class="collapsed"><span>课程中心</span><i
-                                class="icon-submenu fa fa-angle-double-right"></i></a>
-                        <div id="menu3" class="collapse ">
-                            <ul class="nav">
-                                <li><a href="stu_home.jsp">正在学习课程</a></li>
-                                <li><a href="../AddCourseServlet" class="">选择课程</a></li>
-                                <li><a href="" class="active">课程推荐</a></li>
-                                <li><a href="#" class="">课程学习</a></li>
-                                <li><a href="#" class="">成绩查询</a></li>
-                                <li><a href="#" class="">学习交流</a></li>
-                                <li><a href="#" class="">资源分享</a></li>
+<div>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#menu4" data-toggle="collapse" class="collapsed"><span>帮助和反馈</span><i
-                                class="icon-submenu fa fa-angle-double-right"></i></a>
-                        <div id="menu4" class="collapse ">
-                            <ul class="nav">
-                                <li><a href="#" class="">投诉</a></li>
-                                <li><a href="#" class="">系统通知</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <jsp:include page="navbar.jsp"></jsp:include>
+</div>
+<div class="leftnav">
 
-    <div class="main">
-        <div class="main-content">
-            <div style="float: right">
-                <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>
-                <img src="../Student/img/PC.png" width="40">
-            </div>
-            <div class="container-fluid">
-                <h3 class="page-title">课程推荐</h3>
-                <div class="row">
-                    <div class="panel panel-info">
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">课程中心</a>
-                            </li>
-                            <li class="active">
-                                课程推荐
-                            </li>
-                        </ul>
-                        <h4>内容推荐课程</h4>
-                        <div id="show_course">
-                            <c:if test="${sessionScope.course==null}">
-                                <p class="text-center">当前数据库还没有完善！敬请期待</p>
-                            </c:if>
-                            <div class="container-fluid proj-bottom">
+    <jsp:include page="leftside.jsp"></jsp:include>
+</div>
 
-                                <div class="row">
-                                    <c:forEach var="c" items="${sessionScope.course.suggestcoursepages}" varStatus="Status">
-                                        <div class="col-md-4 col-sm-6 fh5co-project animate-box"
-                                             data-animate-effect="fadeIn">
-                                            <a href="../ChooseCourse?courseid=${c.id}"><img
-                                                    src="${c.picture}"
-                                                    alt="图片丢失" class="img-responsive">
-                                                <p> 课程名称： ${c.name}</p>
-                                                <p>
-                                                    课程介绍： ${c.introduction}</p>
-                                            </a>
-                                        </div>
+<div class="container fixmain">
+    <div class="row clearfix">
+        <div class="col-md-12 column ">
+            <ul class="breadcrumb">
 
-                                    </c:forEach>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <h4>协同过滤推荐</h4>
-                        <div id="show_course1">
-                            <c:if test="${sessionScope.course==null}">
-                                <p class="text-center">当前数据库还没有完善！敬请期待</p>
-                            </c:if>
-                            <div class="container-fluid proj-bottom">
-
-                                <div class="row">
-                                    <c:forEach var="c" items="${sessionScope.course.suggestcoursebyrelation}" varStatus="Status">
-                                        <div class="col-md-4 col-sm-6 fh5co-project animate-box"
-                                             data-animate-effect="fadeIn">
-                                            <a href="../ChooseCourse?courseid=${c.id}"><img
-                                                    src="${c.picture}"
-                                                    alt="图片丢失" class="img-responsive">
-                                                <p> 课程名称： ${c.name}</p>
-                                                <p>
-                                                    课程介绍： ${c.introduction}</p>
-                                            </a>
-                                        </div>
-
-                                    </c:forEach>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
+                <li>
+                    <a href="#">课程中心</a>
+                </li>
+                <li class="active">
+                    成绩查询
+                </li>
+                <div style="float: right;">
+                    <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>
+                    <img src="../Student/img/PC.png" width="40">
                 </div>
+            </ul>
+            <h4>内容推荐课程</h4>
+            <div id="show_course">
+                <c:if test="${sessionScope.course==null}">
+                    <p class="text-center">当前数据库还没有完善！敬请期待</p>
+                </c:if>
+                <div class="container-fluid proj-bottom">
+
+                    <div class="row">
+                        <c:forEach var="c" items="${sessionScope.course.suggestcoursepages}" varStatus="Status">
+                            <div class="col-md-4 col-sm-6 fh5co-project animate-box"
+                                 data-animate-effect="fadeIn">
+                                <a href="../ChooseCourse?courseid=${c.id}"><img
+                                        src="${c.picture}"
+                                        alt="图片丢失" class="img-responsive">
+                                    <p> 课程名称： ${c.name}</p>
+                                    <p>
+                                        课程介绍： ${c.introduction}</p>
+                                </a>
+                            </div>
+
+                        </c:forEach>
+                    </div>
+
+                </div>
+
+            </div>
+            <h4>协同过滤推荐</h4>
+            <div id="show_course1">
+                <c:if test="${sessionScope.course==null}">
+                    <p class="text-center">当前数据库还没有完善！敬请期待</p>
+                </c:if>
+                <div class="container-fluid proj-bottom">
+
+                    <div class="row">
+                        <c:forEach var="c" items="${sessionScope.course.suggestcoursebyrelation}" varStatus="Status">
+                            <div class="col-md-4 col-sm-6 fh5co-project animate-box"
+                                 data-animate-effect="fadeIn">
+                                <a href="../ChooseCourse?courseid=${c.id}"><img
+                                        src="${c.picture}"
+                                        alt="图片丢失" class="img-responsive">
+                                    <p> 课程名称： ${c.name}</p>
+                                    <p>
+                                        课程介绍： ${c.introduction}</p>
+                                </a>
+                            </div>
+
+                        </c:forEach>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
-
-</div>
-</div>
 </div>
 </body>
 </html>

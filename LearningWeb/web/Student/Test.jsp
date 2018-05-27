@@ -2,6 +2,7 @@
 <html>
 <title>分数查询</title>
 <head>
+    <title></title>
     <meta charset="utf-8">
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -30,7 +31,7 @@
                 <li class="active">
                     成绩查询
                 </li>
-                <div style="float: right">
+                <div style="float: right;">
                     <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>
                     <img src="../Student/img/PC.png" width="40">
                 </div>
