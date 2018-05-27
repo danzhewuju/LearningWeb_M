@@ -14,17 +14,14 @@ import java.util.List;
 public class StudentDAO {
 
     public boolean IsOk(StudentPage studentPage){
-        boolean flag = true;
-        StudentDAO studentDAO = new StudentDAO();
-        List<StudentPage> studentPageList = new ArrayList<>();
-        studentPageList = studentDAO.GetAll();
-        for(int i=0;i<studentPageList.size();i++){
-            StudentPage s = new StudentPage();
-            s = studentPageList.get(i);
-            if(s.getUsername().equals(studentPage.getUsername()))
-                return false;
-        }
-        return true;
+       boolean flag=false;
+       if (studentPage.getId()!=null)
+       {
+           StudentPage studentPage1=GetById(studentPage.getId());
+           if (studentPage1!=null) flag=true;
+       }
+
+        return flag;
     }
 
     public boolean Add(StudentPage studentPage) {

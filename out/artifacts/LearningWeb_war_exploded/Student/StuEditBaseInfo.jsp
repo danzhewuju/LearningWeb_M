@@ -57,12 +57,12 @@
                     <div class="panel-body">
                         <div class="col-md-2 column">
                         </div>
-                        <form action="/StuEditInfo" method="post" enctype="multipart/form-data">
+                        <form action="/StuEditInfo" method="post" >
                             <div class="col-md-5 column">
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">昵称</label>
                                     <input type="text" id="name" class="form-control" name="name"
-                                           value=" ${sessionScope.studentpage.name}"/>
+                                           value="${sessionScope.studentpage.name}"/>
                                     <br/>
                                     <label class="col-sm-2 control-label">生日</label>
                                     <input type="date" id="birthday" class="form-control" name="birthday"
@@ -70,50 +70,47 @@
                                     <br/>
                                     <label class="col-sm-2 control-label"> 学历</label>
                                     <input type="text" id="status" class="form-control" name="status"
-                                           value=" ${sessionScope.studentpage.status}"/>
+                                           value="${sessionScope.studentpage.status}"/>
                                     <br/>
                                     <label class="col-sm-2 control-label"> 年级</label>
-                                    <input type="text" id="grade" class="form-control" name="grade"
-                                           value=" ${sessionScope.studentpage.grade}"/>
+                                    <input type="text" id="gradar" class="form-control" name="grade"
+                                           value="${sessionScope.studentpage.grade}"/>
                                     <br/>
                                     <label class="col-sm-2 control-label"> 邮箱</label>
                                     <input type="text" id="eamil" class="form-control" name="email"
-                                           value=" ${sessionScope.studentpage.email}"/>
+                                           value="${sessionScope.studentpage.email}"/>
                                     <label class="col-sm-2 control-label"> 专业</label>
                                     <input type="text" id="major" class="form-control" name="major"
-                                           value=" ${sessionScope.studentpage.major}"/>
-                                </div>
+                                           value="${sessionScope.studentpage.major}"/>
+                                    <input type="submit" value="确认"
+                                           class="btn btn-success "/>
+
+                                    <input type="reset" value="重置"
+                                           class="btn btn-danger "/>
+
                             </div>
-                        </form>
-                            <div class="col-md-1 column">
-                            </div>
-                            <div class="col-md-3 column">
+
+                            <%--<div class="col-md-3 column">
                                 <img src="${sessionScope.studentpage.picture}"
                                      class="img-circle im" alt="头像">
                                 <br/>
                                 <input type="file" class="form-control" name="picurl"/>
+                            </div>--%>
+
+
+
+
                             </div>
 
+                        </form>
+
+
                     </div>
                 </div>
-                </div>
-                <div class="col-md-offset-3">
-                    <input type="submit" value="确认"
-                           class="btn btn-success col-md-2"/>
-                    <div class="col-md-offset-3">
-                        <input type="reset" value="重置"
-                               class="btn btn-danger col-md-2"/>
-                    </div>
-                </div>
-
-                </form>
-
-
             </div>
         </div>
     </div>
 </div>
-
 
 </body>
 </html>
