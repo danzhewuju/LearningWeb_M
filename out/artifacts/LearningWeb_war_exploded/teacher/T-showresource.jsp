@@ -24,7 +24,9 @@
 </head>
 <body>
 <% String address = request.getParameter("add");
-    request.getSession().setAttribute("add", address);
+    String kind = request.getParameter("kind");
+    request.getSession().setAttribute("address", address);
+    request.getSession().setAttribute("kind", kind);
 %>
 <div id="wrapper">
     <!-- LEFT SIDEBAR -->
@@ -32,9 +34,9 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="T-homepage.jsp" class="active"><span>Home</span></a></li>
+                    <li><a href="T-homepage.jsp" class="active"><span>主页</span></a></li>
                     <li>
-                        <a href="#subPages1" data-toggle="collapse" class=""><span>Student</span> <i
+                        <a href="#subPages1" data-toggle="collapse" class=""><span>学生</span> <i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages1" class="collapse">
                             <ul class="nav">
@@ -43,7 +45,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#subPages2" data-toggle="collapse" class=""><span>Course</span> <i
+                        <a href="#subPages2" data-toggle="collapse" class=""><span>课程</span> <i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages2" class="collapse">
                             <ul class="nav">
@@ -53,7 +55,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="T-info.jsp" class=""><span>Person Center</span></a></li>
+                    <li><a href="T-info.jsp" class=""><span>个人中心</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -78,21 +80,48 @@
                                 资源查看
                             </li>
                         </ul>
-                        <div class="panel-body">
+
+                        <c:choose>
+                            <c:when test="${sessionScope.kind=='pdf'}">
+                                <a href="${sessionScope.address}" class="center-block">点击预览</a>
+
+                            </c:when>
+                        <c:when test="${sessionScope.kind=='ppt'}" >
+                            <a href="${sessionScope.address} " class="center-block">点击预览</a>
+                        </c:when>
+
+                            <c:when test="${sessionScope.kind=='视频'}">
+                                <fieldset>
+                                    <legend>${cd.chname}</legend>
+
+                                    <video width="320" height="240" controls="controls">
+                                        <source src=${sessionScope.address} type="video/mp4"/>
+                                        <source src=${sessionScope.address} type="video/ogg"/>
+                                        <source src=${sessionScope.address} type="video/webm"/>
+                                        <object data=${sessionScope.address} width="320" height="240">
+                                            <embed src=${sessionScope.address} width="320" height="240"/>
+                                        </object>
+                                    </video>
+                                </fieldset>
+                            </c:when>
+
+                        </c:choose>
+
+                        <%--<div class="panel-body">
                             <form class="form-signin" name="form1" method="post" action="../upload.do">
                                 <fieldset>
                                     <legend>${cd.chname}</legend>
 
                                     <video width="320" height="240" controls="controls">
-                                        <source src=${address} type="video/mp4"/>
-                                        <source src=${address} type="video/ogg"/>
-                                        <source src=${address} type="video/webm"/>
-                                        <object data=${address} width="320" height="240">
-                                            <embed src=${address} width="320" height="240"/>
+                                        <source src=${sessionScope.address} type="video/mp4"/>
+                                        <source src=${sessionScope.address} type="video/ogg"/>
+                                        <source src=${sessionScope.address} type="video/webm"/>
+                                        <object data=${sessionScope.address} width="320" height="240">
+                                            <embed src=${sessionScope.address} width="320" height="240"/>
                                         </object>
                                     </video>
                                 </fieldset>
-                            </form>
+                            </form>--%>
                         </div>
                     </div>
                 </div>

@@ -99,7 +99,7 @@
                                                 <td>${cd.number}</td>
                                                 <td>${cd.chname}</td>
 
-                                                <td><a href="T-showresource.jsp?add=${cd.address}">${cd.name}</a></td>
+                                                <td><a href="T-showresource.jsp?add=${cd.address}&kind=${cd.kind}">${cd.name}</a></td>
                                                 <td>${cd.kind}</td>
                                                 </tr>
                                             </c:forEach>

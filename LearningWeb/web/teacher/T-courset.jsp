@@ -31,7 +31,7 @@
                 <ul class="nav">
                     <li><a href="T-homepage.jsp" class="active"><span>主页</span></a></li>
                     <li>
-                        <a href="#subPages1" data-toggle="collapse" class=""><span>学生</span> <i
+                        <a href="#subPages1" data-toggle="collapse" class=""><span>学生管理</span> <i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages1" class="collapse">
                             <ul class="nav">
@@ -40,7 +40,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#subPages2" data-toggle="collapse" class=""><span>课程</span> <i
+                        <a href="#subPages2" data-toggle="collapse" class=""><span>课程中心</span> <i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages2" class="collapse">
                             <ul class="nav">
@@ -50,7 +50,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="T-info.jsp" class=""><span>Person Center</span></a></li>
+                    <li><a href="T-info.jsp" class=""><span>个人中心</span></a></li>
                 </ul>
             </nav>
         </div>

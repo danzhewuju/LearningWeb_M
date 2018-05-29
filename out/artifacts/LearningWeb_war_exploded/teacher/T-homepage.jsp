@@ -31,28 +31,28 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="T-homepage.jsp" class="active"><span>Home</span></a></li>
+                    <li><a href="T-homepage.jsp" class="active"><span>主页</span></a></li>
                     <li>
-                        <a href="#subPages1" data-toggle="collapse" class=""><span>Student</span> <i
-                            class="icon-submenu fa fa-angle-double-right"></i></a>
+                        <a href="#subPages1" data-toggle="collapse" class=""><span>学生管理</span> <i
+                                class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages1" class="collapse">
                             <ul class="nav">
-                                <li><a href="../Tdisplayclass?i=2" class="">查看学生信息</a></li>
+                                <li><a href="T-display.jsp" class="">查看学生信息</a></li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a href="#subPages2" data-toggle="collapse" class=""><span>Course</span> <i
+                        <a href="#subPages2" data-toggle="collapse" class=""><span>课程中心</span> <i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages2" class="collapse">
                             <ul class="nav">
-                                <li><a href="../Tdisplayclass?i=3" class="">课程设置</a></li>
-                                <li><a href="../Tdisplayclass?i=1" class="">课程管理</a></li>
-                                <li><a href="../Tbfapply" class="">课程申请</a></li>
+                                <li><a href="T-courset.jsp" class="">课程设置</a></li>
+                                <li><a href="T-uploadpage.jsp" class="">课程管理</a></li>
+                                <li><a href="T-applypage.jsp" class="">课程申请</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="T-info.jsp" class=""><span>Person Center</span></a></li>
+                    <li><a href="T-info.jsp" class=""><span>个人中心</span></a></li>
                 </ul>
             </nav>
         </div>
