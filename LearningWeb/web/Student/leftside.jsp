@@ -83,7 +83,7 @@
                             class="icon-submenu fa fa-angle-double-right"></i></a>
                     <div id="menu4" class="collapse ">
                         <ul class="nav">
-                            <li><a href="#" class="">投诉</a></li>
+                            <li><a href="StuComplaint.jsp" class="">投诉</a></li>
                             <li><a href="#" class="">系统通知</a></li>
                         </ul>
                     </div>

@@ -15,9 +15,13 @@ public class ServletTest extends HttpServlet {
 //             String name=request.getParameter("test");
 //             System.out.println(name);
         response.setContentType("text/html;charset=UTF-8");
-
-
+        GetFilePath getFilePath=new GetFilePath();
+        FileUpload fileUpload=new FileUpload("data/PDF",request,"data/PDF");
+        fileUpload.upload();
+        System.out.println(fileUpload.getRpath());
         response.sendRedirect("test.jsp");
+
+
 
     }
 

@@ -29,8 +29,8 @@ import java.util.List;
 public class Tdupload extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* 完成文件的写入*/
-        String path =GetFilePath.getFilePath("data");
-        FileUpload fileUpload =new FileUpload(path,request,"data");
+        String path ="data";
+        FileUpload fileUpload =new FileUpload("data",request,"data");
         fileUpload.upload();
 
 //        文件存入数据库

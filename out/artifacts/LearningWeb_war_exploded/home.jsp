@@ -88,9 +88,39 @@
                 <h3>It connects the knowledge points by means of map</h3>
                 <h3>so that you can study more clear and efficient</h3>
                 <br>
-                <a href="Login.jsp" class="btn btn-primary my-btn">Start Now</a>
+                <a href="#modal-container-929621" data-toggle="modal" class="btn btn-primary my-btn">登录</a>
+                <div class="modal fade" id="modal-container-929621" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title text-center" id="myModalLabel">
+                                    登录我的账号
+                                </h4>
+                            </div>
+                            <form role="form" action="StuLogin" method="post">
+                                <div class="modal-body">
+
+                                    <div class="form-group has-feedback">
+                                        <span class="glyphicon glyphicon-user form-control-feedback" style="color: rgb(255, 140, 60);"></span>
+                                        <input type="text"  name="myusername" class="form-control glyphicon glyphicon-user" id="exampleInputEmail1" placeholder="用户名"  />
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <span class="glyphicon glyphicon-lock form-control-feedback" style="color: rgb(255, 140, 60);"></span>
+                                        <input type="password" name="mypassword" class="form-control" id="exampleInputPassword1" placeholder="密码"/>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button> <input type="submit" class="btn btn-primary" value="提交   ">
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
                 <a href="http://baike.baidu.com/link?url=mATZtjbez9vNb15gNBNT7Ku0rNMCn5msWiLlQm3tPorZLbjHwIX2MfTz202yWALyvG36B3w-e2DGFnYGoIiX5wWMGsP3gP0Y-A_Y2I3rqwS8GuBMLOArkAsUQdOpZo4r"
-                   class="btn btn-primary my-btn2">Learn More</a>
+                   class="btn btn-primary my-btn2">更多</a>
             </div>
         </div>
     </div>

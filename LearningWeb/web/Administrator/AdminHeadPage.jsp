@@ -37,10 +37,10 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="AdminHeadPage.jsp" class="active"><span>Home</span></a></li>
-                    <li><a href="Admin-StuSel.jsp" class=""> <span>Student</span></a></li>
+                    <li><a href="AdminHeadPage.jsp" class=""><span>主页</span></a></li>
+                    <li><a href="Admin-StuSel.jsp" class=""> <span>学生管理</span></a></li>
                     <li>
-                        <a href="#menu1" data-toggle="collapse" class="collapsed"><span>Course</span><i
+                        <a href="#menu1" data-toggle="collapse" class="collapsed"><span>课程管理</span><i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="menu1" class="collapse">
                             <ul class="nav">
@@ -52,7 +52,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#menu2" data-toggle="collapse" class="collapsed"><span>Teacher</span><i
+                        <a href="#menu2" data-toggle="collapse" class="collapsed"><span>教师管理</span><i
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="menu2" class="collapse ">
                             <ul class="nav">
@@ -61,7 +61,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="Admin-VerTab.jsp" class=""><span>Record</span></a></li>
+                    <li><a href="Admin-VerTab.jsp" class=""><span>记录中心</span></a></li>
                 </ul>
             </nav>
         </div>

@@ -3,6 +3,7 @@ package StudentServlst;
 import DAO.StudentDAO;
 import Page.StudentPage;
 import StudentServlst.Student.SelectedCourses;
+import Util.Message;
 
 import javax.jws.WebService;
 import javax.servlet.annotation.WebServlet;
@@ -34,15 +35,13 @@ public class StuLogin extends javax.servlet.http.HttpServlet {
 
             }
             else {
-                  String message="<p>密码错误，请重新输入！</p>";
-                  request.getSession().setAttribute("rresult",message);
-                response.sendRedirect("../Login.jsp");
+                  String message="密码错误，请重新输入！";
+                Message.alermessage(response,message,"../home.jsp");
             }
         }
         else
-        { String message="<p>账号不存在！</p>";
-            request.getSession().setAttribute("rresult",message);
-            response.sendRedirect("../Login.jsp");
+        { String message="账号不存在！";
+            Message.alermessage(response,message,"../home.jsp");
         }
         //数据库的操作
 

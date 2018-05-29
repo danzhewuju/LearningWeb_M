@@ -30,7 +30,7 @@ public class StuEditInfo extends HttpServlet {
         name = request.getParameter("name");
         birthday = request.getParameter("birthday");
         Date dbirthday = Date.valueOf(birthday);
-        gendar = studentPage.getGendar();    //性别默认不可更改
+        gendar = studentPage.getGendar();    //性别默认不可更改，以后可以提供更改
         status = request.getParameter("status");
         email = request.getParameter("email");
         grade = request.getParameter("grade");

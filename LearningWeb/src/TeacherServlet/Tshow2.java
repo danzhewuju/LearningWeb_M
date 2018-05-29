@@ -27,7 +27,7 @@ public class Tshow2 extends HttpServlet {
 
 //        String path="C:\\Programming\\JavaWeb\\LearningWeb\\LearningWeb\\web\\data\\examtest";//设置题目的存储路径，Windows环境下的配置
 //        String path = "/Users/alexanderdan/Program/JavaWeb/LearningWeb_M/LearningWeb/web/data/examtest";//必须指定存储路径mac环境下的配置
-        String path = GetFilePath.getFilePath("data/examtest");
+        String path = "data/examtest";
         FileUpload fileUpload=new FileUpload(path,request,"data/examtest");
         fileUpload.upload();//文件的存储写入
 

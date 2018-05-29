@@ -153,6 +153,7 @@
                                                             <select name="kind">
                                                                 <option value="ppt">PPT</option>
                                                                 <option value="视频">视频</option>
+                                                                <option value="pdf">PDF</option>
                                                                 <option value=null>无</option>
                                                             </select>
                                                         </p>

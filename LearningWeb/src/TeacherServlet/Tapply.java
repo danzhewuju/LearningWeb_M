@@ -50,7 +50,7 @@ public class Tapply extends HttpServlet {
         request.getSession().setAttribute("flag",f);
 
 
-        FileUpload fileUpload=new FileUpload(GetFilePath.getFilePath("data"),request,"data");
+        FileUpload fileUpload=new FileUpload("data",request,"data");
         fileUpload.upload();
         System.out.println("输出成功！！！\t"+fileUpload.getRpath());
 
