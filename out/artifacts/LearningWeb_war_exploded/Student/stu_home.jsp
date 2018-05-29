@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>分数查询</title>
+<title>学习界面</title>
 <head>
     <meta charset="utf-8">
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
