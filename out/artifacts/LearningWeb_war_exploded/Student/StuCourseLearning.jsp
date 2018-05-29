@@ -35,7 +35,7 @@
                     <a href="#">课程中心</a>
                 </li>
                 <li class="active">
-                    章节学习
+                    章节学习¬
                 </li>
                 <div style="float: right;">
                     <a href="StuInfo.jsp"> 欢迎 ${studentpage.name}</a>

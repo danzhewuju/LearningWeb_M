@@ -58,11 +58,11 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/home.jsp"> Home</a></li>
-                        <li><a href="/showcourse.jsp"> Course</a></li>
-                        <li><a href="showteacher.jsp"> Teacher</a></li>
-                        <li><a href="about.jsp"> About</a></li>
-                        <li><a href="/home/SafeExit"> Log out</a></li>
+                        <li><a href="/home.jsp"> 主页</a></li>
+                        <li><a href="/showcourse.jsp"> 课程</a></li>
+                        <li><a href="showteacher.jsp"> 教师</a></li>
+                        <li><a href="about.jsp"> 关于</a></li>
+                        <li><a href="/home/SafeExit"> 退出</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
