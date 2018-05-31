@@ -48,7 +48,7 @@ public class Signup extends HttpServlet {
 
         StudentDAO studentDAO=new StudentDAO();
         studentDAO.Add(studentPage);
-        response.sendRedirect("../Login.jsp");
+        response.sendRedirect("../home.jsp");
 
 
 

@@ -1,5 +1,8 @@
-import java.text.SimpleDateFormat;
-import java.util.*;
+import DAO.ProgressDAO;
+import Page.ProgressPage;
+
+import java.util.UUID;
+
 
 /**
  * Created by ycbhci on 2017/6/26.
@@ -32,16 +35,16 @@ public class Main {
         SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         String time=dateFormat.format(date);
         System.out.println(time);*/
-        int a,b;
-        Scanner scanner=new Scanner(System.in);
-        Random random=new Random();
-        a=scanner.nextInt();
-        b=scanner.nextInt();
-        int c=scanner.nextInt();
-        for (int i=0;i<c;i++)
-        {
-            System.out.println(random.nextInt(b-a+1)+a);
-        }
 
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        System.out.println(uuid);
+        ProgressDAO progressDAO = new ProgressDAO();
+        ProgressPage progressPage = new ProgressPage();
+//        progressPage.setId(uuid);
+        progressPage.setStudentid("1");
+        progressPage.setCourseid("1");
+        progressPage.setChapterid("2");
+        progressPage.setExamscore("100");
+        progressDAO.Add(progressPage);
     }
 }

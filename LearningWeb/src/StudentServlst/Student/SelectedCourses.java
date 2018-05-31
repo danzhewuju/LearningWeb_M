@@ -8,6 +8,7 @@ import Page.*;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -92,9 +93,19 @@ public class SelectedCourses {
        {
            List<ProgressPage> progressPages=progressDAO.GetAllByColumn("studentid",studentPage.getId(),"courseid",coursePages.get(i).getId());
            List<ChapterPage> chapterPages =chapterDAO.GetAllByColumn("courseid",coursePages.get(i).getId());
+           List<ChapterPage> chapterPagestem=new ArrayList<>();
            int procount,chaptercount;
            chaptercount=chapterPages.size();
-           procount=progressPages.size();
+           /*需要去除掉同一个章节多次考试的情况*/
+           HashMap hashMap=new HashMap();
+           for (ChapterPage c : chapterPages) {
+               if (hashMap.get(c.getCourseid())==null)
+               {
+                   hashMap.put(c.getCourseid(),"true");
+                   chapterPagestem.add(c);
+               }
+           }
+           procount=chapterPagestem.size();
            if (chaptercount==0)
            {
                percentage=0;

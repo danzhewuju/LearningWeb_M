@@ -4,7 +4,6 @@ import DAO.AssociationDAO;
 import DAO.ChapterDAO;
 import DAO.ProgressDAO;
 import Page.*;
-
 import java.util.ArrayList;
 
 /**
@@ -115,7 +114,8 @@ public class Graph {
         ArrayList<ProgressPage> progressPages = (ArrayList<ProgressPage>) progressDAO.GetAllByColumn("studentid", studentPage.getId(), "courseid", coursePage.getId());
         for (int i = 0; i < chaptercount; i++) {
             for (int j = 0; j < progressPages.size(); j++) {
-                if (chapterPageArrayList.get(i).getId().equals(progressPages.get(j).getChapterid())) {
+                int grade=Integer.valueOf(progressPages.get(j).getExamscore());
+                if (chapterPageArrayList.get(i).getId().equals(progressPages.get(j).getChapterid())&&grade>60) {
                     finishchapter[i] = 1;
                     finishedchapter.add(chapterPageArrayList.get(i));
                 }
@@ -291,7 +291,18 @@ public class Graph {
         progressDAO.Add(progressPage);
         learninngchapterPage=null;    //清空正在学习列表
 
-
+    }
+    public void failexam(int grade)
+    {
+        //只进行数据库操作
+        ProgressDAO progressDAO=new ProgressDAO();
+        ProgressPage progressPage=new ProgressPage();
+        progressPage.setChapterid(learninngchapterPage.getId());
+        progressPage.setCourseid(coursePage.getId());
+        progressPage.setExamscore(String.valueOf(grade));
+        progressPage.setStudentid(studentPage.getId());
+        progressDAO.Add(progressPage);
+        learninngchapterPage=null;    //清空正在学习列表
     }
 
 }

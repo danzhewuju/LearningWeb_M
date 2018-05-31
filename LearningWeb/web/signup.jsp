@@ -74,7 +74,7 @@
             <div class="col-md-6 column">
                 <div class="row clearfix">
                     <div class="col-md-3 column">
-                        <input type="radio" name="sex" checked/>
+                        <input type="radio" name="sex" checked value="男"/>
                     </div>
                     <div class="col-md-9 column">♂
                     </div>
@@ -83,7 +83,7 @@
             <div class="col-md-6 column">
                 <div class="row clearfix">
                     <div class="col-md-3 column">
-                        <input type="radio" name="sex"/>
+                        <input type="radio" name="sex" value="女"/>
                     </div>
                     <div class="col-md-9 column">♀
                     </div>

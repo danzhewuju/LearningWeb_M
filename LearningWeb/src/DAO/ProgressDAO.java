@@ -14,23 +14,18 @@ import java.util.List;
  */
 public class ProgressDAO {
     public boolean IsOk(ProgressPage progressPage){
-        boolean flag = true;
-        ProgressDAO progressDAO = new ProgressDAO();
-        List<ProgressPage> progressPageList = new ArrayList<>();
-        progressPageList = progressDAO.GetAll();
-        for(int i=0;i<progressPageList.size();i++){
-            ProgressPage s = new ProgressPage();
-            s = progressPageList.get(i);
-            if(s.getCourseid().equals(progressPage.getCourseid()))
-                if(s.getStudentid().equals(progressPage.getStudentid()))
-                    if(s.getChapterid().equals(progressPage.getChapterid()))
-                        return false;
+        boolean flag = false;
+        if (progressPage.getId()!=null)
+        {
+            ProgressPage progressPage1=GetById(progressPage.getId());
+            if (progressPage1!=null) flag=true;
         }
-        return true;
+        return flag;
+
     }
     
     public boolean Add(ProgressPage progressPage) {
-        if(!IsOk(progressPage))
+        if(IsOk(progressPage))
             return false;
         boolean flag = false;
         Session session = null;
@@ -136,18 +131,23 @@ public class ProgressDAO {
 
     public ProgressPage GetById(String id){
         Session session = null;
-        session = HibernateUtils.getSession();
-        session.beginTransaction();
-        ProgressPage progressPage = new ProgressPage();
-        ProgressEntity progressEntity = (ProgressEntity) session.load(ProgressEntity.class,id);
-        progressPage.setId(progressEntity.getId());
-        progressPage.setChapterid(progressEntity.getChapterid());
-        progressPage.setCourseid(progressEntity.getCourseid());
-        progressPage.setExamscore(progressEntity.getExamscore());
-        progressPage.setStudentid(progressEntity.getStudentid());
-        /*BeanUtils.copyProperties(progressEntity, progressPage);*/
-        session.getTransaction().commit();
-        HibernateUtils.closeSession(session);
+        ProgressPage progressPage = null;
+        try {
+            session = HibernateUtils.getSession();
+            session.beginTransaction();
+            progressPage = new ProgressPage();
+            ProgressEntity progressEntity = (ProgressEntity) session.load(ProgressEntity.class,id);
+            progressPage.setId(progressEntity.getId());
+            progressPage.setChapterid(progressEntity.getChapterid());
+            progressPage.setCourseid(progressEntity.getCourseid());
+            progressPage.setExamscore(progressEntity.getExamscore());
+            progressPage.setStudentid(progressEntity.getStudentid());
+            /*BeanUtils.copyProperties(progressEntity, progressPage);*/
+            session.getTransaction().commit();
+            HibernateUtils.closeSession(session);
+        } catch (Exception e) {
+            progressPage=null;
+        }
         return progressPage;
     }
 
@@ -235,5 +235,4 @@ public class ProgressDAO {
         HibernateUtils.closeSession(session);
         return progressPageList;
     }
-
 }

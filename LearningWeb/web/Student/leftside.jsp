@@ -67,7 +67,7 @@
                             class="icon-submenu fa fa-angle-double-right"></i></a>
                     <div id="menu3" class="collapse ">
                         <ul class="nav">
-                            <li><a href="stu_home.jsp" class="active ">正在学习课程</a></li>
+                            <li><a href="stu_home.jsp" class="">正在学习课程</a></li>
                             <li><a href="../AddCourseServlet" class="">选择课程</a></li>
                             <li><a href="../SuggestCourse" class="">课程推荐</a></li>
                             <li><a href="stu_home.jsp" class="">课程学习</a></li>

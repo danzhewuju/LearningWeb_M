@@ -34,10 +34,6 @@ public class Question {
         this.coursePage = coursePage;
         this.chapterPage = chapterPage;
         setExamPages();//获得试题库，并设置随机题目
-
-
-
-
     }
 
     public StudentPage getStudentPage() {
@@ -75,10 +71,7 @@ public class Question {
        {
            int ran=0;
            examcount=examPages.size();
-
            ran=getRandom(0,examPages.size()-1);//随机获取试题
-
-
            setUsingexampage(examPages.get(ran));//获得随机的测试题
            setAnswer();//获得本试题的答案序列
        }

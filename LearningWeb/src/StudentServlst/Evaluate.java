@@ -24,7 +24,6 @@ public class Evaluate extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Question question = (Question) request.getSession().getAttribute("question");
         Graph graph = (Graph) request.getSession().getAttribute("graph");
-        PrintWriter out = response.getWriter();
         ArrayList<String> answer = new ArrayList<>();
         for (int i = 0; i < question.getCount(); i++) {
             String pram = "radio" + i;
@@ -39,7 +38,11 @@ public class Evaluate extends HttpServlet {
             message = "恭喜你获得了" + message + "分，通过了本章节的考试！";
             Message.alermessage(response, message, "Student/StuCourseLearning.jsp");
         } else {//没有通过测试
-            response.sendRedirect("Student/FailedTest.jsp");
+            graph.failexam(question.getGrade());
+            request.getSession().setAttribute("graph", graph);
+            String message = String.valueOf(question.getGrade());
+            message = "你获得了" + message + "分，建议继续巩固本章知识内容，再接再厉!";
+            Message.alermessage(response, message, "Student/StuCourseLearning.jsp");
         }
 
     }

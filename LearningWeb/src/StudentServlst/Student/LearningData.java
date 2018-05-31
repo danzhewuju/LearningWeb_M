@@ -17,6 +17,10 @@ public class LearningData {
     private int pptcount;
     private ArrayList<DataPage> learningmp4;//视频信息
     private int mp4count;
+    private ArrayList<DataPage> learningpdf;//相关文档信息
+    private int pdfcount;
+    private ArrayList<DataPage> learningpaper;//多元化学习资料
+    private int papercount;
 
 
     public LearningData(ChapterPage chapterPage) {
@@ -86,10 +90,12 @@ public class LearningData {
         this.count = count;
     }
 
-    public void learningclass()//将学习资料分类
+    public void learningclass()//将学习资料分类,将数据进行统计
     {
         learningppt = new ArrayList<>();
         learningmp4 = new ArrayList<>();
+        learningpaper=new ArrayList<>();
+        learningpdf=new ArrayList<>();
         for (int i = 0; i < count; i++) {
             if (learningall.get(i).getKind().equals("ppt")) {
                 learningppt.add(learningall.get(i));
@@ -97,10 +103,51 @@ public class LearningData {
             if (learningall.get(i).getKind().equals("视频")) {
                 learningmp4.add(learningall.get(i));
             }
+            if(learningall.get(i).getKind().equals("pdf"))
+            {
+                learningpdf.add(learningall.get(i));
+            }
+            if (learningall.get(i).getKind().equals("paper"))
+            {
+                learningpaper.add(learningall.get(i));
+            }
         }
         setPptcount(learningppt.size());
         setMp4count(learningmp4.size());
+        setPdfcount(learningpdf.size());
+        setPapercount(learningpaper.size());
 
     }
 
+    public ArrayList<DataPage> getLearningpdf() {
+        return learningpdf;
+    }
+
+    public void setLearningpdf(ArrayList<DataPage> learningpdf) {
+        this.learningpdf = learningpdf;
+    }
+
+    public int getPdfcount() {
+        return pdfcount;
+    }
+
+    public void setPdfcount(int pdfcount) {
+        this.pdfcount = pdfcount;
+    }
+
+    public ArrayList<DataPage> getLearningpaper() {
+        return learningpaper;
+    }
+
+    public void setLearningpaper(ArrayList<DataPage> learningpaper) {
+        this.learningpaper = learningpaper;
+    }
+
+    public int getPapercount() {
+        return papercount;
+    }
+
+    public void setPapercount(int papercount) {
+        this.papercount = papercount;
+    }
 }

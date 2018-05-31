@@ -28,7 +28,7 @@ public class StudentDAO {
         boolean flag = false;
         Session session = null;
         StudentDAO studentDAO = new StudentDAO();
-        if(!studentDAO.IsOk(studentPage))
+        if(studentDAO.IsOk(studentPage))
             return flag;
         try {
             session = HibernateUtils.getSession();
