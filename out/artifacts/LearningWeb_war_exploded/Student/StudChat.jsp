@@ -64,9 +64,32 @@
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <div class="col-md-12">
+                            <h3>
+                                拓展讨论群组
+                            </h3>
+                            <table class="table table-hover table-striped table-condensed">
+                                <tbody>
+                                <c:forEach var="c" items="${sessionScope.course.canchoosecourses}" varStatus="status">
+                                    <tr class="success">
 
-                            <p class="text-center">this is test block</p>
+
+                                        <td>
+                                            <img src="${c.picture}" width="40" >
+                                                ${c.name}
+                                        </td>
+
+
+                                        <td>
+                                            <a href="../StuBroChat?index=${status.index}&kind=left" ><button class="btn btn-primary">进入</button></a>
+                                        </td>
+                                    </tr>
+
+                                </c:forEach>
+
+                                </tbody>
+                            </table>
+
                         </div>
 
                     </div>
@@ -107,7 +130,7 @@
                                     </td>
 
                                     <td>
-                                        <a href="../StuBroChat?index=${status.index}" ><button class="btn btn-danger">进入</button></a>
+                                        <a href="../StuBroChat?index=${status.index}&kind=main" ><button class="btn btn-danger">进入</button></a>
                                     </td>
                                 </tr>
 
