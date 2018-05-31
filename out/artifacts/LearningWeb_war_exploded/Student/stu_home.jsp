@@ -39,6 +39,9 @@
                         </ul>
                         <div id="show_course">
                             <div class="container-fluid proj-bottom">
+                                <c:if test="${sessionScope.selectedcourses.count==0}">
+                                    <h4 class="text-center"><a href="../SuggestCourse">你还没有课程，赶紧添加课程</a></h4>
+                                </c:if>
 
                                 <div class="row">
                                     <c:forEach var="i" begin="0" end="${sessionScope.selectedcourses.count}" step="1">
