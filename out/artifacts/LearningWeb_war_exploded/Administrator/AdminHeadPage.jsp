@@ -1,4 +1,10 @@
-<%--
+<%@ page import="DAO.TeacherDAO" %>
+<%@ page import="DAO.StudentDAO" %>
+<%@ page import="DAO.CourseDAO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Page.TeacherPage" %>
+<%@ page import="Page.StudentPage" %>
+<%@ page import="Page.CoursePage" %><%--
   Created by IntelliJ IDEA.
   User: Amos
   Date: 2017/6/28
@@ -31,6 +37,19 @@
     </style>
 </head>
 <body>
+<%
+    TeacherDAO teacherDAO=new TeacherDAO();
+    StudentDAO studentDAO=new StudentDAO();
+    CourseDAO courseDAO=new CourseDAO();
+    ArrayList<TeacherPage> teacherPages= (ArrayList<TeacherPage>) teacherDAO.GetAll();
+    ArrayList<StudentPage> studentPages= (ArrayList<StudentPage>) studentDAO.GetAll();
+    ArrayList<CoursePage> coursePages= (ArrayList<CoursePage>) courseDAO.GetAll();
+    request.getSession().setAttribute("teacherPages",teacherPages);
+    request.getSession().setAttribute("studentPages",studentPages);
+    request.getSession().setAttribute("coursePages",coursePages);
+
+
+%>
 <div id="wrapper">
     <!-- LEFT SIDEBAR -->
     <div id="sidebar-nav" class="sidebar">
@@ -84,7 +103,7 @@
                                 <div href="Admin-StuSel.jsp" class="metric">
                                     <span class="icon"><i class="fa fa-user"></i></span>
                                     <p>
-                                        <span class="number">1,252</span>
+                                        <span class="number">${fn:length(sessionScope.studentPages)}</span>
                                         <span class="title">Students</span>
                                     </p>
                                 </div>
@@ -93,7 +112,7 @@
                                 <div href="Admin-CouSel.jsp" class="metric">
                                     <span class="icon"><i class="fa fa-th-list"></i></span>
                                     <p>
-                                        <span class="number">203</span>
+                                        <span class="number">${fn:length(sessionScope.coursePages)}</span>
                                         <span class="title">Courses</span>
                                     </p>
                                 </div>
@@ -102,7 +121,7 @@
                                 <div href="Admin-TeaSel.jsp" class="metric">
                                     <span class="icon"><i class="fa fa-male"></i></span>
                                     <p>
-                                        <span class="number">18</span>
+                                        <span class="number">${fn:length(sessionScope.teacherPages)}</span>
                                         <span class="title">Teachers</span>
                                     </p>
                                 </div>
@@ -127,56 +146,35 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Name</th>
-                                        <th>Number</th>
-                                        <th>Teacher</th>
+                                        <th>编号</th>
+                                        <th>名字</th>
+                                        <th>类别</th>
+                                        <th>介绍</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><a href="#">010101</a></td>
-                                        <td>高等数学</td>
-                                        <td>80</td>
-                                        <td>James</td>
-                                        <td><span class="label label-success">Detail</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">010102</a></td>
-                                        <td>大学物理</td>
-                                        <td>76</td>
-                                        <td>Allen</td>
-                                        <td><span class="label label-success">Detail</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">010103</a></td>
-                                        <td>数据结构</td>
-                                        <td>39</td>
-                                        <td>Ross</td>
-                                        <td><span class="label label-success">Detail</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">010104</a></td>
-                                        <td>软件协同设计</td>
-                                        <td>12</td>
-                                        <td>Amos</td>
-                                        <td><span class="label label-success">Detail</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">010105</a></td>
-                                        <td>操作系统</td>
-                                        <td>22</td>
-                                        <td>Steven</td>
-                                        <td><span class="label label-success">Detail</span></td>
-                                    </tr>
+                                    <c:forEach var="c" items="${sessionScope.coursePages}" varStatus="status">
+                                       <c:if test="${status.index<5}">
+
+                                           <tr>
+                                               <td><a href="#">${c.id}</a></td>
+                                               <td>${c.name}</td>
+                                               <td>${c.kind}</td>
+                                               <td>${c.introduction}</td>
+                                               <td><span class="label label-success">Detail</span></td>
+                                           </tr>
+                                       </c:if>
+
+                                    </c:forEach>
+
                                     </tbody>
                                 </table>
                             </div>
                             <div class="row">
                                 <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span>
                                 </div>
-                                <div class="col-md-6 text-right"><a href="#" class="btn btn-success">View All
+                                <div class="col-md-6 text-right"><a href="Admin-CouSel.jsp" class="btn btn-success">View All
                                     Courses</a></div>
                             </div>
                         </div>

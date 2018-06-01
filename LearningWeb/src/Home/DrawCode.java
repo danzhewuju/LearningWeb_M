@@ -1,7 +1,6 @@
+package Home;
+
 import Util.DrawYzm;
-import Util.FileUpload;
-import Util.GetFilePath;
-import Util.Message;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ServletTest" ,value = "/ServletTest")
-public class ServletTest extends HttpServlet {
+@WebServlet(name = "DrawCode",value = "/DrawCode")
+public class DrawCode extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         DrawYzm drawYzm=new DrawYzm();
         drawYzm.getCode(request,response);
         request.setAttribute("yzm",drawYzm);

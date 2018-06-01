@@ -38,8 +38,17 @@
     <!--[if lt IE 9]>
     <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <script type="text/javascript" src="js/respond.min.js"></script>
+
     <![endif]-->
 
+
+    <script type="text/javascript">
+        function reset() {
+            var url = document.getElementById("yzm_img_real").getAttribute("src");
+            var randomnum = Math.random();
+            document.getElementById("yzm_img_real").setAttribute("src", url + "?" + randomnum);
+        }
+    </script>
 </head>
 <body>
 <div id="tf-home">
@@ -89,7 +98,8 @@
                 <h3>so that you can study more clear and efficient</h3>
                 <br>
                 <a href="#modal-container-929621" data-toggle="modal" class="btn btn-primary my-btn">登录</a>
-                <div class="modal fade" id="modal-container-929621" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+                <div class="modal fade" id="modal-container-929621" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -102,16 +112,27 @@
                                 <div class="modal-body">
 
                                     <div class="form-group has-feedback">
-                                        <span class="glyphicon glyphicon-user form-control-feedback" style="color: rgb(255, 140, 60);"></span>
-                                        <input type="text"  name="myusername" class="form-control glyphicon glyphicon-user" id="exampleInputEmail1" placeholder="用户名"  />
+                                        <span class="glyphicon glyphicon-user form-control-feedback"
+                                              style="color: rgb(255, 140, 60);"></span>
+                                        <input type="text" name="myusername"
+                                               class="form-control glyphicon glyphicon-user" id="exampleInputEmail1"
+                                               placeholder="用户名"/>
                                     </div>
                                     <div class="form-group has-feedback">
-                                        <span class="glyphicon glyphicon-lock form-control-feedback" style="color: rgb(255, 140, 60);"></span>
-                                        <input type="password" name="mypassword" class="form-control" id="exampleInputPassword1" placeholder="密码"/>
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"
+                                              style="color: rgb(255, 140, 60);"></span>
+                                        <input type="password" name="mypassword" class="form-control"
+                                               id="exampleInputPassword1" placeholder="密码"/>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button> <input type="submit" class="btn btn-primary" value="提交   ">
+                                    <div class=" form-group has-feedback" style="left: -3%">
+                                        <div class="col-md-8"><input type="text" name="auth" placeholder="验证码" class="form-control"></div>
+
+                                        <div id="yzm_img" ><img src="/ServletTest" width="100px" id="yzm_img_real" onclick="reset()"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        <input type="submit" class="btn btn-primary" value="提交 ">
+                                    </div>
                                 </div>
                             </form>
                         </div>

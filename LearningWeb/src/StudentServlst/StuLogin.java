@@ -3,6 +3,7 @@ package StudentServlst;
 import DAO.StudentDAO;
 import Page.StudentPage;
 import StudentServlst.Student.SelectedCourses;
+import Util.DrawYzm;
 import Util.Message;
 
 import javax.jws.WebService;
@@ -20,6 +21,8 @@ public class StuLogin extends javax.servlet.http.HttpServlet {
         String name,password;
         name=request.getParameter("myusername");
         password=request.getParameter("mypassword");
+        String Drawcode= (String) request.getSession().getAttribute("codeValidate");
+        String Drawcodein=request.getParameter("auth");
         StudentDAO studentDAO=new StudentDAO();
         StudentPage studentPage=studentDAO.GetByColumn("username",name);
         if (studentPage!=null)
@@ -27,12 +30,18 @@ public class StuLogin extends javax.servlet.http.HttpServlet {
             if(studentPage.getPassword().equals(password))
             {
 
-                request.getSession().setAttribute("studentpage",studentPage);
-                SelectedCourses selectedcourses =new SelectedCourses(studentPage);
-                request.getSession().setAttribute("selectedcourses",selectedcourses);
-                response.sendRedirect("Student/stu_home.jsp");
-
-
+                if (Drawcode.equals(Drawcodein))
+                {
+                    request.getSession().setAttribute("studentpage",studentPage);
+                    SelectedCourses selectedcourses =new SelectedCourses(studentPage);
+                    request.getSession().setAttribute("selectedcourses",selectedcourses);
+                    response.sendRedirect("Student/stu_home.jsp");
+                }
+                else
+                {
+                    String message="验证码错误，请重新输入！";
+                    Message.alermessage(response,message,"../home.jsp");
+                }
             }
             else {
                   String message="密码错误，请重新输入！";

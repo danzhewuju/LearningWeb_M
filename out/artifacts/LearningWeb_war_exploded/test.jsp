@@ -10,10 +10,15 @@
 <head>
     <title>Title</title>
     <%@include file="config.jsp"%>
+    <script  type="text/javascript">
+        function reset() {
+            var url = document.getElementById("yzm_img_real").getAttribute("src");
+            var randomnum = Math.random();
+            document.getElementById("yzm_img_real").setAttribute("src",url+"?"+randomnum);}
+    </script>
 </head>
 <body>
-<iframe src='https://view.officeapps.live.com/op/view.aspx?src=http' width='100%' height='100%' frameborder='1'>
-</iframe>
+<div id="yzm_img" ><img src="/ServletTest" width="100px" id="yzm_img_real" onclick="reset()"></div>
 
 </body>
 </html>
