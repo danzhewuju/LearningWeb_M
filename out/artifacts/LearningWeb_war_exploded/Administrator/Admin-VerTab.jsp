@@ -107,17 +107,38 @@
                                 <%
                                     response.setContentType("text/html;charset=UTF-8");
                                     request.setCharacterEncoding("UTF-8");
-                                    AddCourseDao dao = new AddCourseDao();
-                                    List<Course> list = dao.findTeacherCourse("%通过审核");
+                                    AddcourseDAO addcourseDAO=new AddcourseDAO();
+                                    ArrayList<AddcoursePage> addcoursePages= (ArrayList<AddcoursePage>) addcourseDAO.GetAll();
 
-                                    request.getSession().setAttribute("teacoulist", list);
+                                    request.getSession().setAttribute("addcoursePages",addcoursePages);
+                                    ArrayList<TeacherPage> teacherPages=new ArrayList<>();
+                                    TeacherDAO teacherDAO=new TeacherDAO();
+                                    for (AddcoursePage a: addcoursePages) {
+                                        teacherPages.add(teacherDAO.GetById(a.getTeacherid()));
+
+                                    }
+                                    request.getSession().setAttribute("teacherPages",teacherPages);
+
                                 %>
-                                <c:forEach var="c" items="${sessionScope.teacoulist}" varStatus="status">
+                                <c:forEach var="c" items="${sessionScope.addcoursePages}" varStatus="status">
                                     <tr class="warning">
-                                        <td>${c.cp.name}</td>
-                                        <td>${c.tusername}</td>
-                                        <td>${c.tname}</td>
-                                        <td>${c.precourse1} ${c.precourse2} ${c.precourse3} ${c.precourse4}</td>
+                                        <td>${c.course}</td>
+                                        <td>${sessionScope.teacherPages[status.index].username}</td>
+                                        <td>${sessionScope.teacherPages[status.index].name}</td>
+                                        <td>
+                                                <c:if test="${c.precourseid1=='null'}">
+                                                    无
+                                                </c:if>
+                                            <c:if test="${c.precourseid2=='null'}">
+                                                无
+                                            </c:if>
+                                            <c:if test="${c.precourseid3=='null'}">
+                                                无
+                                            </c:if>
+                                            <c:if test="${c.precourseid4=='null'}">
+                                                无
+                                            </c:if>
+                                               </td>
                                         <td><strong><font color="orange">${c.result}</font> </strong></td>
                                     </tr>
                                 </c:forEach>
