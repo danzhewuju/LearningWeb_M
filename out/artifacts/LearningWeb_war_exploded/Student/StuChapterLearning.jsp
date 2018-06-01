@@ -84,9 +84,7 @@
                             <h3 class="panel-title">
                                 <c:if test="${sessionScope.learningdata.pptcount==0}">
                                     <div class="panel-heading">
-                                        <div class="panel-heading">
                                             <h3 class="panel-title text-danger">当前资料等待上传</h3>
-                                        </div>
                                     </div>
                                 </c:if>
                                 <c:forEach var="i" begin="0" end="${sessionScope.learningdata.pptcount}"
@@ -122,7 +120,7 @@
                                     <c:if test="${i!=sessionScope.learningdata.pdfcount}">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">
-                                                <a href="../Play?address=${sessionScope.learningdata.learningpdf[i].address}&kind=pdf">${sessionScope.learningdata.learningppt[i].name}</a>
+                                                <a href="../Play?address=${sessionScope.learningdata.learningpdf[i].address}&kind=pdf">${sessionScope.learningdata.learningpdf[i].name}</a>
                                             </h3>
                                         </div>
 
@@ -150,7 +148,7 @@
                                     <c:if test="${i!=sessionScope.learningdata.papercount}">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">
-                                                <a href="../Play?address=${sessionScope.learningdata.learningpaper[i].address}&kind=paper">${sessionScope.learningdata.learningppt[i].name}</a>
+                                                <a href="../Play?address=${sessionScope.learningdata.learningpaper[i].address}&kind=paper">${sessionScope.learningdata.learningpaper[i].name}</a>
                                             </h3>
                                         </div>
 

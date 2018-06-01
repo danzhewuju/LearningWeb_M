@@ -37,7 +37,7 @@
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages1" class="collapse">
                             <ul class="nav">
-                                <li><a href="T-display.jsp" class="">查看学生信息</a></li>
+                                <li><a href="../Tdisplayclass?i=2" class="">查看学生信息</a></li>
                             </ul>
                         </div>
                     </li>
@@ -46,9 +46,9 @@
                                 class="icon-submenu fa fa-angle-double-right"></i></a>
                         <div id="subPages2" class="collapse">
                             <ul class="nav">
-                                <li><a href="T-courset.jsp" class="">课程设置</a></li>
-                                <li><a href="T-uploadpage.jsp" class="">课程管理</a></li>
-                                <li><a href="T-applypage.jsp" class="">课程申请</a></li>
+                                <li><a href="../Tdisplayclass?i=3" class="">课程设置</a></li>
+                                <li><a href="../Tdisplayclass?i=1" class="">课程管理</a></li>
+                                <li><a href="../Tbfapply" class="">课程申请</a></li>
                             </ul>
                         </div>
                     </li>
