@@ -93,7 +93,7 @@
 
                                                 <td>${cd.chapternumber}</td>
                                                 <td>${cd.chaptername}</td>
-                                                <td><img src=${cd.address} alt="暂无试题内容信息"/></td>
+                                                <td><img src="${cd.address}" width="50" alt="暂无试题内容信息"/></td>
                                                 <td>${cd.answer}</td>
                                                 </tr>
                                             </c:forEach>

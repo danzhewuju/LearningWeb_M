@@ -21,13 +21,9 @@ public class Play extends HttpServlet {
         String address, kind;
         address = request.getParameter("address");
         kind = request.getParameter("kind");
+        request.getSession().setAttribute("kind",kind);
         request.getSession().setAttribute("address", address);
-        if (kind.equals("ppt") || kind.equals("PPT")) {
-            response.sendRedirect("Student/PlayPPT.jsp");
-        }
-        if (kind.equals("视频")) {
-            response.sendRedirect("Student/PlayMP4.jsp");
-        }
+        response.sendRedirect("Student/Play.jsp");
 
     }
 }

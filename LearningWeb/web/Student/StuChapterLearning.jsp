@@ -84,9 +84,7 @@
                             <h3 class="panel-title">
                                 <c:if test="${sessionScope.learningdata.pptcount==0}">
                                     <div class="panel-heading">
-                                        <div class="panel-heading">
                                             <h3 class="panel-title text-danger">当前资料等待上传</h3>
-                                        </div>
                                     </div>
                                 </c:if>
                                 <c:forEach var="i" begin="0" end="${sessionScope.learningdata.pptcount}"
