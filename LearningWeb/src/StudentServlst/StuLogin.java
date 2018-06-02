@@ -25,32 +25,33 @@ public class StuLogin extends javax.servlet.http.HttpServlet {
         String Drawcodein=request.getParameter("auth");
         StudentDAO studentDAO=new StudentDAO();
         StudentPage studentPage=studentDAO.GetByColumn("username",name);
-        if (studentPage!=null)
-        {
-            if(studentPage.getPassword().equals(password))
+        if (Drawcode.equals(Drawcodein)) {
+            if (studentPage!=null)
             {
+                if(studentPage.getPassword().equals(password))
+                {
 
-                if (Drawcode.equals(Drawcodein))
-                {
-                    request.getSession().setAttribute("studentpage",studentPage);
-                    SelectedCourses selectedcourses =new SelectedCourses(studentPage);
-                    request.getSession().setAttribute("selectedcourses",selectedcourses);
-                    response.sendRedirect("Student/stu_home.jsp");
+
+                        request.getSession().setAttribute("studentpage",studentPage);
+                        SelectedCourses selectedcourses =new SelectedCourses(studentPage);
+                        request.getSession().setAttribute("selectedcourses",selectedcourses);
+                        response.sendRedirect("Student/stu_home.jsp");
+
+
                 }
-                else
-                {
-                    String message="验证码错误，请重新输入！";
+                else {
+                      String message="密码错误，请重新输入！";
                     Message.alermessage(response,message,"../home.jsp");
                 }
             }
-            else {
-                  String message="密码错误，请重新输入！";
+            else
+            { String message="账号不存在！";
                 Message.alermessage(response,message,"../home.jsp");
             }
-        }
-        else
-        { String message="账号不存在！";
+        } else {
+            String message="验证码错误！";
             Message.alermessage(response,message,"../home.jsp");
+
         }
         //数据库的操作
 

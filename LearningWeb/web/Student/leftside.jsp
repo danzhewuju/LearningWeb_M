@@ -73,7 +73,7 @@
                             <li><a href="stu_home.jsp" class="">课程学习</a></li>
                             <li><a href="../StuCheckScore" class="">成绩查询</a></li>
                             <li><a href="../StuChat" class="">学习交流</a></li>
-                            <li><a href="#" class="">资源分享</a></li>
+                            <li><a href="https://www.chingyuhao.win/d/a9d1b106c3894b4493c6/" class="">学习分享</a></li>
 
                         </ul>
                     </div>
