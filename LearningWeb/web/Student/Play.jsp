@@ -59,7 +59,8 @@
                 </c:when>
                 <c:when test="${sessionScope.kind=='ppt'}">
                     <div class="text-center">
-                        <jsp:include page="${sessionScope.address}"></jsp:include>
+                        <h4 class="text-center">哎呀，抱歉因为微软office365在线接口问题，暂时无法在线预览,但是提供下载服务！</h4>
+                        <a href="${sessionScope.address}">点击下载</a>
                     </div>
 
                 </c:when>

@@ -92,7 +92,7 @@
                                     <c:if test="${i!=sessionScope.learningdata.pptcount}">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">
-                                                <a href="../Play?address=${sessionScope.learningdata.learningppt[i].address}&kind=PPT">${sessionScope.learningdata.learningppt[i].name}</a>
+                                                <a href="../Play?address=${sessionScope.learningdata.learningppt[i].address}&kind=ppt">${sessionScope.learningdata.learningppt[i].name}</a>
                                             </h3>
                                         </div>
 
@@ -120,7 +120,7 @@
                                     <c:if test="${i!=sessionScope.learningdata.pdfcount}">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">
-                                                <a href="../Play?address=${sessionScope.learningdata.learningpdf[i].address}&kind=pdf">${sessionScope.learningdata.learningpdf[i].name}</a>
+                                                <a href="${sessionScope.learningdata.learningpdf[i].address}">${sessionScope.learningdata.learningpdf[i].name}</a>
                                             </h3>
                                         </div>
 

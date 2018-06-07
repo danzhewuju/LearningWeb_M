@@ -50,7 +50,7 @@
                                                  data-animate-effect="fadeIn">
                                                 <a href="../ChooseCourse?courseid=${sessionScope.selectedcourses.coursePages[i].id}"><img
                                                         src="${sessionScope.selectedcourses.coursePages[i].picture}"
-                                                        alt="#" class="img-responsive">
+                                                        alt="#" class="img-responsive" style="width:300px;height: 140px ">
                                                     <p> 课程名称： ${sessionScope.selectedcourses.coursePages[i].name}</p>
                                                     <p>
                                                         课程介绍： ${sessionScope.selectedcourses.coursePages[i].introduction}</p>
